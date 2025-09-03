@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ffrf18oapkry"]
+
+[ext_resource type="Script" uid="uid://errwffon6f1h" path="res://src/Audits/audit.gd" id="1_grp52"]
+
+[node name="Audit" type="CharacterBody2D"]
+script = ExtResource("1_grp52")

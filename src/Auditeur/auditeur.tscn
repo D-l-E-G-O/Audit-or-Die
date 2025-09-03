@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhxjmgegq7ill"]
+
+[ext_resource type="Script" uid="uid://bbn5tdidawanh" path="res://src/Auditeur/auditeur.gd" id="1_sfmmv"]
+
+[node name="Auditeur" type="CharacterBody2D"]
+script = ExtResource("1_sfmmv")
