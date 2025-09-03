@@ -2,16 +2,14 @@ extends CharacterBody2D
 class_name Audit
 
 
+@onready var sprite_cliquable: SpriteCliquable = $SpriteCliquable
+
 var valeur: int = 0
 var corrompu: bool = false
 
 
-func _init(valeur_audit: int, position_initiale: Vector2) -> void:
-	valeur = valeur_audit
-	global_position = position_initiale
-
-
-func try_corrompre(proba_corruption: float) -> void:
-	var random: float = randf()
-	if random <= proba_corruption:
-		corrompu = true
+func _on_sprite_cliquable_detection_clic() -> void:
+	"""
+	Procédure qui est activée quand l'utilisateur clique sur le sprite de l'audit.
+	"""
+	AuditManager.liberer_audit(self)

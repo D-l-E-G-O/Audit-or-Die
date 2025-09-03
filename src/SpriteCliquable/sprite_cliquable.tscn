@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwrlbolabuowy"]
+
+[ext_resource type="Script" uid="uid://b08c2sf232c0i" path="res://src/SpriteCliquable/sprite_cliquable.gd" id="1_o5voq"]
+
+[node name="SpriteCliquable" type="Sprite2D"]
+script = ExtResource("1_o5voq")
