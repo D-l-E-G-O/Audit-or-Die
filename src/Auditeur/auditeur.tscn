@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhxjmgegq7ill"]
+[gd_scene load_steps=4 format=3 uid="uid://dhxjmgegq7ill"]
 
 [ext_resource type="Script" uid="uid://bbn5tdidawanh" path="res://src/Auditeur/auditeur.gd" id="1_sfmmv"]
+[ext_resource type="Texture2D" uid="uid://jwkow7m6uesq" path="res://icon.svg" id="2_7l2fw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ek136"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7l2fw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Auditeur" type="CharacterBody2D"]
 script = ExtResource("1_sfmmv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_ek136")

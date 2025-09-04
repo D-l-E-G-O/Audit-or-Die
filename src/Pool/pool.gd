@@ -1,7 +1,7 @@
 class_name Pool
 
 
-var _pool: Array = []
+var _pool: Array[Node] = []
 var _scene: PackedScene
 
 
@@ -19,6 +19,7 @@ func get_instance() -> Node:
 	for objet in _pool:
 		if !objet.visible:
 			objet.visible = true
+			objet.set_physics_process(true)
 			return objet
 	var new_objet = _scene.instantiate()
 	_pool.append(new_objet)
@@ -30,3 +31,4 @@ func liberer(objet: Node) -> void:
 	Procédure qui libère l'objet en le désactivant plutôt quand le détruisant complètement.
 	"""
 	objet.visible = false
+	objet.set_physics_process(false)

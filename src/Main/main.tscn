@@ -7,20 +7,20 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qkh5l")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 368.0
-offset_top = 64.0
-offset_right = 593.0
-offset_bottom = 127.0
-theme_override_font_sizes/font_size = 40
-text = "Créer audit"
-
 [node name="Auditeurs" type="Node2D" parent="."]
 
 [node name="Auditeur" parent="Auditeurs" instance=ExtResource("2_wkb84")]
-position = Vector2(484, 260)
+position = Vector2(594, 384)
 
 [node name="AuditManager" type="Node2D" parent="."]
 script = ExtResource("3_umts7")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 473.0
+offset_top = 56.0
+offset_right = 717.0
+offset_bottom = 119.0
+theme_override_font_sizes/font_size = 40
+text = "Creer audits"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

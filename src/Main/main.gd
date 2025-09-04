@@ -7,4 +7,4 @@ extends Node2D
 
 func _on_button_pressed() -> void:
 	for auditeur: Auditeur in auditeurs.get_children():
-		auditeur.creer_audit()
+		auditeur.creer_plusieurs_audits()
