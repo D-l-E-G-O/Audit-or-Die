@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8xy4b1t336uc"]
-
-[ext_resource type="Script" uid="uid://b4udju6nwd18m" path="res://src/Createur_Audit/createur_audit.gd" id="1_es0ht"]
-
-[node name="CreateurAudit" type="Node"]
-script = ExtResource("1_es0ht")

@@ -15,7 +15,19 @@ run/main_scene="uid://ktxlgcw1c75"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://src/Autoload/Global.gd"
+SignalBus="*res://src/Autoload/SignalBus.gd"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "red"
+}
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
