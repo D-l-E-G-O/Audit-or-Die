@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcxbtmwayncwk"]
+
+[ext_resource type="Texture2D" uid="uid://cetggvombrkr4" path="res://assets/BarreDeProgression/progressbar_over.png" id="1_vepia"]
+[ext_resource type="Texture2D" uid="uid://jqg5s4dtwjq0" path="res://assets/BarreDeProgression/progressbar_yellow.png" id="2_tdeyi"]
+[ext_resource type="Script" uid="uid://b7e06ro4t0ly2" path="res://src/BarreDeProgression/barre_de_confiance.gd" id="3_mwh0y"]
+[ext_resource type="Texture2D" uid="uid://bglbk6203pab5" path="res://assets/BarreDeProgression/progressbar_under.png" id="3_wk4do"]
+[ext_resource type="Texture2D" uid="uid://d2tkyilig0u21" path="res://assets/BarreDeProgression/progressbar_white.png" id="4_ytjr8"]
+
+[node name="BarreDeConfiance" type="TextureProgressBar" node_paths=PackedStringArray("barre_de_regression")]
+offset_right = 42.0
+offset_bottom = 11.0
+scale = Vector2(6, 6)
+value = 50.0
+texture_over = ExtResource("1_vepia")
+texture_progress = ExtResource("2_tdeyi")
+texture_progress_offset = Vector2(5, 4)
+script = ExtResource("3_mwh0y")
+barre_de_regression = NodePath("BarreDeRegression")
+
+[node name="BarreDeRegression" type="TextureProgressBar" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 60.0
+texture_under = ExtResource("3_wk4do")
+texture_progress = ExtResource("4_ytjr8")
+texture_progress_offset = Vector2(5, 4)
+
+[connection signal="maximum_atteint" from="." to="." method="_on_maximum_atteint"]
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]

@@ -45,7 +45,7 @@ func creer_audit() -> void:
 	"""
 	var valeur_audit: int = get_valeur_audit(niveau)
 	var proba_corruption: float = get_proba_corruption_audit(niveau)
-	AuditManager.creer_audit(valeur_audit, proba_corruption, global_position)
+	SignalBus.creer_audit.emit(valeur_audit, proba_corruption, global_position)
 	nb_audits += 1
 
 

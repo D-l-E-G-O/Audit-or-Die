@@ -1,22 +1,27 @@
 extends Node
+class_name AuditManager
 
 
-static var audit_scene: PackedScene = preload("res://src/Audits/audit.tscn")
+const AUDIT_SCENE: PackedScene = preload("res://src/Audits/audit.tscn")
 
 
+func _ready() -> void:
+	SignalBus.creer_audit.connect(_on_creer_audit)
+	SignalBus.liberer_audit.connect(_on_liberer_audit)
+	SignalBus.recuperer_audit.connect(_on_recuperer_audit)
 
-func creer_audit(valeur_audit: int, proba_corruption: float, position_initiale: Vector2) -> void:
+
+func _on_creer_audit(valeur_audit: int, proba_corruption: float, position_initiale: Vector2) -> void:
 	"""
-	Procédure qui crée un audit.
+	Procédure qui se déclenche quand le joueur ou un auditeur crée un audit.
 	"""
-	var audit: Audit = audit_scene.instantiate()
+	var audit: Audit = AUDIT_SCENE.instantiate()
 	init_audit(audit, valeur_audit, position_initiale)
-	connecte_signal(audit)
 	try_corrompre_audit(audit, proba_corruption)
 	spawn_audit(audit)
 
 
-static func init_audit(audit: Audit, valeur_audit: int, position_initiale: Vector2) -> void:
+func init_audit(audit: Audit, valeur_audit: int, position_initiale: Vector2) -> void:
 	"""
 	Constructeur de l'audit.
 	"""
@@ -24,40 +29,43 @@ static func init_audit(audit: Audit, valeur_audit: int, position_initiale: Vecto
 	audit.global_position = position_initiale
 
 
-static func connecte_signal(audit: Audit) -> void:
-	"""
-	Procédure qui connecte le signal de l'audit à la fonction correspondante.
-	"""
-	audit.liberer.connect(liberer_audit)
-
-
-static func try_corrompre_audit(audit: Audit, proba_corruption: float) -> void:
+func try_corrompre_audit(audit: Audit, proba_corruption: float) -> void:
 	"""
 	Procédure qui a une chance rendre l'audit corrompu.
 	"""
 	var random: float = randf()
 	if random <= proba_corruption:
 		audit.corrompu = true
+		audit.valeur *= -1
 		audit.modulate = Color.RED
 
 
-static func liberer_audit(audit: Audit) -> void:
+func _on_recuperer_audit(audit: Audit) -> void:
 	"""
-	Procédure qui détruit l'audit
+	Procédure qui se déclenche quand un audit est cliqué.
+	"""
+	var valeur_audit: int = audit.get_valeur()
+	SignalBus.ajouter_valeur_barre_confiance.emit(valeur_audit)
+	SignalBus.liberer_audit.emit(audit)
+
+
+func _on_liberer_audit(audit: Audit) -> void:
+	"""
+	Procédure qui se déclenche quand l'audit est cliqué ou quand il a disparu.
 	"""
 	audit.queue_free()
 
 
 func spawn_audit(audit: Audit) -> void:
 	"""
-	Procédure qui ajoute l'audit dans la scene
+	Procédure qui ajoute l'audit dans la scene.
 	"""
 	add_child(audit)
 
 
 #region Pooling system
 
-#static var audit_pool: Pool = Pool.new(audit_scene)
+#static var audit_pool: Pool = Pool.new(AUDIT_SCENE)
 
 #func creer_audit(valeur_audit: int, proba_corruption: float, position_initiale: Vector2) -> void:
 	#"""
