@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://sap3maln6hka"]
+
+[ext_resource type="Script" uid="uid://pgeqa18dva34" path="res://src/Zone/zone.gd" id="1_mktu7"]
+
+[node name="Zone" type="Node2D"]
+script = ExtResource("1_mktu7")

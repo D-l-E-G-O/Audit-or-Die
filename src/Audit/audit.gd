@@ -24,13 +24,25 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 
+func init_audit(audit_value: int, initial_position: Vector2) -> void:
+	value = audit_value
+	global_position = initial_position
+
+
+func try_corrompre_audit(corruption_proba: float) -> void:
+	var random: float = randf()
+	if random <= corruption_proba:
+		corrupted = true
+		value *= -1
+		modulate = Color.RED
+
+
 func _become_transparent() -> void:
 	texture_button.modulate.a -= TRANSPARENCY_INCREMENT
 	if texture_button.modulate.a <= 0.0:
 		SignalBus.free_audit.emit(self)
 
 
-##Procédure qui donne un sens de mouvement aléatoire à l'audit.
 func _set_random_velocity() -> void:
 	var random_rotation: float = randf_range(PI, -PI)
 	velocity = Vector2.UP.rotated(random_rotation) * SPEED
@@ -40,6 +52,5 @@ func _init_timer() -> void:
 	timer.start(LIFETIME)
 
 
-##Procédure qui se déclenche quand l'utilisateur clique sur le sprite de l'audit.
 func _on_texture_button_pressed() -> void:
 	SignalBus.collect_audit.emit(self)

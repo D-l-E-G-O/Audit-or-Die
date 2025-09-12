@@ -47,16 +47,4 @@ script = ExtResource("6_ljg8q")
 [node name="InfoCom" parent="MainScene/ZoneManager" instance=ExtResource("6_81s5k")]
 position = Vector2(-150, 30)
 
-[node name="IT" parent="MainScene/ZoneManager" instance=ExtResource("6_81s5k")]
-position = Vector2(275, -80)
-
-[node name="Pharma" parent="MainScene/ZoneManager" instance=ExtResource("6_81s5k")]
-position = Vector2(465, -385)
-
-[node name="Civil" parent="MainScene/ZoneManager" instance=ExtResource("6_81s5k")]
-position = Vector2(-420, 175)
-
-[node name="Physics" parent="MainScene/ZoneManager" instance=ExtResource("6_81s5k")]
-position = Vector2(-345, -100)
-
 [connection signal="value_changed" from="MainScene/ConfidenceBar" to="." method="_on_confidence_bar_value_changed"]
