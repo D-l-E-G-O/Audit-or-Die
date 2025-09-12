@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhxjmgegq7ill"]
 
-[ext_resource type="Script" uid="uid://bbn5tdidawanh" path="res://src/Auditeur/auditeur.gd" id="1_sfmmv"]
-[ext_resource type="Texture2D" uid="uid://jwkow7m6uesq" path="res://icon.svg" id="2_7l2fw"]
+[ext_resource type="Script" uid="uid://bbn5tdidawanh" path="res://src/Auditor/auditor.gd" id="1_sfmmv"]
+[ext_resource type="Texture2D" uid="uid://jwkow7m6uesq" path="res://assets/icon.svg" id="2_7l2fw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ek136"]
 animations = [{
@@ -14,7 +14,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Auditeur" type="CharacterBody2D"]
+[node name="Auditor" type="CharacterBody2D"]
 script = ExtResource("1_sfmmv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
