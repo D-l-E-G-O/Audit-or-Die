@@ -6,60 +6,40 @@ class_name Audit
 @onready var timer: Timer = $Timer
 
 const SPEED: int = 30
-const TEMPS_DE_VIE: float = 2.0
-const INCREMENT_DE_TRANSPARENCE: float = 0.01
+const LIFETIME: float = 2.0
+const TRANSPARENCY_INCREMENT: float = 0.01
 
-var valeur: int = 0
-var corrompu: bool = false
+var value: int = 0
+var corrupted: bool = false
 
 
 func _ready() -> void:
-	"""
-	Procédure qui se déclenche dès que l'audit entre dans la scene.
-	"""
-	_set_velocite_aleatoire()
+	_set_random_velocity()
 	_init_timer()
 
 
 func _physics_process(_delta: float) -> void:
-	"""
-	Procédure déclenchée chaque frame.
-	"""
 	if timer.is_stopped():
-		_rendre_invisible()
+		_become_transparent()
 	move_and_slide()
 
 
-func _rendre_invisible() -> void:
-	texture_button.modulate.a -= INCREMENT_DE_TRANSPARENCE
+func _become_transparent() -> void:
+	texture_button.modulate.a -= TRANSPARENCY_INCREMENT
 	if texture_button.modulate.a <= 0.0:
-		SignalBus.liberer_audit.emit(self)
+		SignalBus.free_audit.emit(self)
 
 
-func get_valeur() -> int:
-	"""
-	Fonction qui renvoie la valeur de l'audit.
-	"""
-	return valeur
-
-
-func _set_velocite_aleatoire() -> void:
-	"""
-	Procédure qui donne un sens de mouvement aléatoire à l'audit.
-	"""
-	var rotation_random: float = randf_range(PI, -PI)
-	velocity = Vector2.UP.rotated(rotation_random) * SPEED
+##Procédure qui donne un sens de mouvement aléatoire à l'audit.
+func _set_random_velocity() -> void:
+	var random_rotation: float = randf_range(PI, -PI)
+	velocity = Vector2.UP.rotated(random_rotation) * SPEED
 
 
 func _init_timer() -> void:
-	"""
-	Procédure qui initialise le timer.
-	"""
-	timer.start(TEMPS_DE_VIE)
+	timer.start(LIFETIME)
 
 
+##Procédure qui se déclenche quand l'utilisateur clique sur le sprite de l'audit.
 func _on_texture_button_pressed() -> void:
-	"""
-	Procédure qui se déclenche quand l'utilisateur clique sur le sprite de l'audit.
-	"""
-	SignalBus.recuperer_audit.emit(self)
+	SignalBus.collect_audit.emit(self)

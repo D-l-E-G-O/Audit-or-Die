@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://ktxlgcw1c75"]
 
 [ext_resource type="Script" uid="uid://dxyc6e3uk3xvm" path="res://src/Main/main.gd" id="1_qkh5l"]
-[ext_resource type="PackedScene" uid="uid://dhxjmgegq7ill" path="res://src/Auditeur/auditeur.tscn" id="2_wkb84"]
+[ext_resource type="PackedScene" uid="uid://dhxjmgegq7ill" path="res://src/Auditor/auditor.tscn" id="2_wkb84"]
 [ext_resource type="Script" uid="uid://b4udju6nwd18m" path="res://src/Audits/audit_manager.gd" id="3_umts7"]
-[ext_resource type="PackedScene" uid="uid://bcxbtmwayncwk" path="res://src/BarreDeProgression/barre_de_confiance.tscn" id="4_xsymy"]
-[ext_resource type="Script" uid="uid://cghouj6s1n8tk" path="res://src/Epreuve/epreuve_manager.gd" id="5_koglj"]
+[ext_resource type="PackedScene" uid="uid://bcxbtmwayncwk" path="res://src/ProgressionBar/confidence_bar.tscn" id="4_xsymy"]
+[ext_resource type="Script" uid="uid://cghouj6s1n8tk" path="res://src/Trial/trial_manager.gd" id="5_koglj"]
 
 [node name="Main" type="Node2D"]
 process_mode = 3
@@ -13,9 +13,9 @@ script = ExtResource("1_qkh5l")
 [node name="MainScene" type="Node2D" parent="."]
 process_mode = 1
 
-[node name="Auditeurs" type="Node2D" parent="MainScene"]
+[node name="Auditors" type="Node2D" parent="MainScene"]
 
-[node name="Auditeur" parent="MainScene/Auditeurs" instance=ExtResource("2_wkb84")]
+[node name="Auditor" parent="MainScene/Auditors" instance=ExtResource("2_wkb84")]
 position = Vector2(218, 484)
 
 [node name="AuditManager" type="Node2D" parent="MainScene"]
@@ -27,44 +27,44 @@ offset_top = 238.0
 offset_right = 327.0
 offset_bottom = 301.0
 theme_override_font_sizes/font_size = 40
-text = "Créer audits"
+text = "Create audits"
 
-[node name="BarreDeConfiance" parent="MainScene" instance=ExtResource("4_xsymy")]
-offset_left = 393.0
-offset_top = 23.0
-offset_right = 435.0
-offset_bottom = 34.0
-
-[node name="Palier" type="Label" parent="MainScene"]
+[node name="Stage" type="Label" parent="MainScene"]
 offset_left = 658.0
 offset_top = 24.0
 offset_right = 944.0
 offset_bottom = 79.0
 theme_override_font_sizes/font_size = 40
-text = "Palier 1 (0/100)"
+text = "Stage 1 (0/100)"
 
-[node name="Epreuve" type="Node2D" parent="."]
+[node name="ConfidenceBar" parent="MainScene" instance=ExtResource("4_xsymy")]
+offset_left = 395.0
+offset_top = 18.0
+offset_right = 437.0
+offset_bottom = 29.0
+
+[node name="Trial" type="Node2D" parent="."]
 process_mode = 2
-visible = false
 script = ExtResource("5_koglj")
 
-[node name="BoutonReussir" type="Button" parent="Epreuve"]
-offset_left = 438.0
-offset_top = 274.0
-offset_right = 701.0
-offset_bottom = 337.0
+[node name="SucceedButton" type="Button" parent="Trial"]
+offset_left = 464.0
+offset_top = 277.0
+offset_right = 727.0
+offset_bottom = 340.0
 theme_override_font_sizes/font_size = 40
-text = "Réussir epreuve"
+text = "Succeed Trial
+"
 
-[node name="BoutonEchouer" type="Button" parent="Epreuve"]
+[node name="FailButton" type="Button" parent="Trial"]
 offset_left = 430.0
 offset_top = 346.0
 offset_right = 764.0
 offset_bottom = 409.0
 theme_override_font_sizes/font_size = 40
-text = "Echouer Epreuve"
+text = "Fail Trial"
 
 [connection signal="pressed" from="MainScene/Button" to="." method="_on_button_pressed"]
-[connection signal="value_changed" from="MainScene/BarreDeConfiance" to="." method="_on_barre_de_confiance_value_changed"]
-[connection signal="pressed" from="Epreuve/BoutonReussir" to="Epreuve" method="_on_bouton_reussir_pressed"]
-[connection signal="pressed" from="Epreuve/BoutonEchouer" to="Epreuve" method="_on_bouton_echouer_pressed"]
+[connection signal="value_changed" from="MainScene/ConfidenceBar" to="." method="_on_confidence_bar_value_changed"]
+[connection signal="pressed" from="Trial/SucceedButton" to="Trial" method="_on_succeed_button_pressed"]
+[connection signal="pressed" from="Trial/FailButton" to="Trial" method="_on_fail_button_pressed"]
