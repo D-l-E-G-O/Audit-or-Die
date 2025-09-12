@@ -15,6 +15,7 @@ animations = [{
 }]
 
 [node name="Auditor" type="CharacterBody2D"]
+scale = Vector2(0.2, 0.2)
 script = ExtResource("1_sfmmv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
