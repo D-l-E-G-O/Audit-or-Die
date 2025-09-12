@@ -4,17 +4,17 @@ extends Node
 @warning_ignore_start("unused_signal")
 
 
-signal creer_audit(valeur_audit: int, proba_corruption: float, position: Vector2)
+signal create_audit(audit_value: int, corruption_proba: float, position: Vector2)
 
-signal liberer_audit(audit: Audit)
+signal free_audit(audit: Audit)
 
-signal recuperer_audit(audit: Audit)
+signal collect_audit(audit: Audit)
 
-signal ajouter_valeur_barre_confiance(valeur: int)
+signal add_confidence_bar_value(value: int)
 
-signal lancer_epreuve_de_validation(palier: int)
+signal start_stage_trial(stage: int)
 
-signal fin_epreuve(epreuve_reussie: bool)
+signal end_trial(trial_succeeded: bool)
 
 
 @warning_ignore_restore("unused_signal")
