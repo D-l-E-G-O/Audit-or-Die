@@ -19,7 +19,7 @@ func spawn_auditor(auditor: Auditor) -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("create_audits"):
 		for auditor: Auditor in auditor_manager.get_children():
-			auditor.create_multiple_audits()
+			SignalBus.trigger_audit_creation.emit(auditor)
 	elif Input.is_action_just_pressed("create_auditors"):
 		for zone: Zone in zone_manager.get_children():
 			SignalBus.deploy_auditor.emit(zone)

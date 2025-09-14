@@ -1,46 +1,31 @@
-[gd_scene load_steps=15 format=3 uid="uid://ktxlgcw1c75"]
+[gd_scene load_steps=14 format=3 uid="uid://ktxlgcw1c75"]
 
 [ext_resource type="Script" uid="uid://dxyc6e3uk3xvm" path="res://src/Main/main.gd" id="1_qkh5l"]
 [ext_resource type="Texture2D" uid="uid://qb5otraedldr" path="res://assets/Map/map.png" id="2_81s5k"]
 [ext_resource type="Script" uid="uid://2yrni2yx52t" path="res://src/Auditor/auditor_manager.gd" id="3_ljg8q"]
 [ext_resource type="Script" uid="uid://b4udju6nwd18m" path="res://src/Audit/audit_manager.gd" id="3_umts7"]
 [ext_resource type="PackedScene" uid="uid://bcxbtmwayncwk" path="res://src/ProgressionBar/confidence_bar.tscn" id="4_xsymy"]
-[ext_resource type="Script" uid="uid://bd5tt13hv8ysp" path="res://src/Zone/zone_manager.gd" id="6_ljg8q"]
 [ext_resource type="Script" uid="uid://dv17uj2f40j2p" path="res://src/Zone/zone.gd" id="7_6atdx"]
-[ext_resource type="PackedScene" uid="uid://dthnx8y6iq2v2" path="res://src/AuditTriggerArea/audit_trigger_area.tscn" id="9_6atdx"]
+[ext_resource type="PackedScene" uid="uid://dh76rtnmwp5ch" path="res://src/Pathfinding/pathfinding.tscn" id="7_27y3g"]
+[ext_resource type="PackedScene" uid="uid://dhxjmgegq7ill" path="res://src/Auditor/auditor.tscn" id="8_6atdx"]
 
 [sub_resource type="Curve2D" id="Curve2D_81s5k"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 97, -24, 0, 0, 0, 0, -94, -29, 0, 0, 0, 0, -94.3918, 36.7028, 0, 0, 0, 0, 97, 37, 0, 0, 0, 0, 139, 3, 0, 0, 0, 0, 97, -23)
+"points": PackedVector2Array(0, 0, 0, 0, -106, -4, 0, 0, 0, 0, -175, -5, 0, 0, 0, 0, -167, 254, 0, 0, 0, 0, -19, 172, 0, 0, 0, 0, 44, 148, 0, 0, 0, 0, 129, 148, 0, 0, 0, 0, 136, 33)
 }
-point_count = 6
+point_count = 7
 
 [sub_resource type="Curve2D" id="Curve2D_ljg8q"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 2, 74, 0, 0, 0, 0, -34.6281, 69.3982, 0, 0, 0, 0, -33.0176, -85.2108, 0, 0, 0, 0, 35, -87, 0, 0, 0, 0, 36, 76, 0, 0, 0, 0, 4, 74, 0, 0, 0, 0, 9, 132, 0, 0, 0, 0, -56, 129, 0, 0, 0, 0, -54, 172, 0, 0, 0, 0, -268, 169, 0, 0, 0, 0, -286, 118, 0, 0, 0, 0, -268, 172, 0, 0, 0, 0, -52, 174, 0, 0, 0, 0, -49, 127, 0, 0, 0, 0, 7, 127, 0, 0, 0, 0, 4, 74)
+"points": PackedVector2Array(0, 0, 0, 0, 7, 86, 0, 0, 0, 0, 9, 132, 0, 0, 0, 0, -56, 129, 0, 0, 0, 0, -54, 172, 0, 0, 0, 0, -268, 169, 0, 0, 0, 0, -287, 142)
 }
-point_count = 16
+point_count = 6
 
 [sub_resource type="Curve2D" id="Curve2D_27y3g"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -8, -118, 0, 0, 0, 0, 27, -107, 0, 0, 0, 0, 34, 108, 0, 0, 0, 0, -32.1478, 102.68, 0, 0, 0, 0, -31, -102, 0, 0, 0, 0, -8, -123, 0, 0, 0, 0, 95, -124, 0, 0, 0, 0, 103, 114, 0, 0, 0, 0, 287, 6, 0, 0, 0, 0, 412, 3, 0, 0, 0, 0, 409, -139, 0, 0, 0, 0, 100, -147, 0, 0, 0, 0, 93, -121, 0, 0, 0, 0, -10, -123)
-}
-point_count = 14
 
 [sub_resource type="Curve2D" id="Curve2D_6atdx"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -10, -4, 0, 0, 0, 0, 107.137, -33.061, 0, 0, 0, 0, 171.558, 103.832, 0, 0, 0, 0, 131, 125, 0, 0, 0, 0, 68, 9, 0, 0, 0, 0, -28, 51, 0, 0, 0, 0, 77, 233, 0, 0, 0, 0, 33, 258, 0, 0, 0, 0, -66.798, 102.222, 0, 0, 0, 0, -218, 105, 0, 0, 0, 0, -221, 51, 0, 0, 0, 0, -34.5878, 42.633, 0, 0, 0, 0, -14, 1, 0, 0, 0, 0, -89, 2, 0, 0, 0, 0, -279, 2, 0, 0, 0, 0, -281, 72, 0, 0, 0, 0, -622, 75, 0, 0, 0, 0, -619, 105, 0, 0, 0, 0, -500, 223, 0, 0, 0, 0, -474, 416, 0, 0, 0, 0, -502, 215, 0, 0, 0, 0, -618, 104, 0, 0, 0, 0, -621, 75, 0, 0, 0, 0, -283, 70, 0, 0, 0, 0, -278, 4, 0, 0, 0, 0, -12, -1)
-}
-point_count = 26
 
 [sub_resource type="Curve2D" id="Curve2D_88d5u"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 36, 25, 0, 0, 0, 0, 78, 25, 0, 0, 0, 0, 80, -33, 0, 0, 0, 0, -75, -33, 0, 0, 0, 0, -83, 4, 0, 0, 0, 0, -154, -2, 0, 0, 0, 0, -157, 62, 0, 0, 0, 0, -109, 60, 0, 0, 0, 0, -97, 4, 0, 0, 0, 0, -57, 25, 0, 0, 0, 0, 35, 27, 0, 0, 0, 0, 36, 59, 0, 0, 0, 0, 300, 60, 0, 0, 0, 0, 334, 138, 0, 0, 0, 0, 300, 60, 0, 0, 0, 0, 36, 60, 0, 0, 0, 0, 36, 25)
-}
-point_count = 17
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_27y3g"]
-radius = 30.0
 
 [node name="Main" type="Node2D"]
 process_mode = 3
@@ -54,6 +39,10 @@ texture = ExtResource("2_81s5k")
 
 [node name="AuditorManager" type="Node2D" parent="MainScene"]
 script = ExtResource("3_ljg8q")
+
+[node name="Auditor" parent="MainScene/AuditorManager" instance=ExtResource("8_6atdx")]
+
+[node name="Auditor2" parent="MainScene/AuditorManager" instance=ExtResource("8_6atdx")]
 
 [node name="AuditManager" type="Node2D" parent="MainScene"]
 script = ExtResource("3_umts7")
@@ -76,17 +65,25 @@ offset_bottom = -458.0
 zoom = Vector2(0.6, 0.6)
 
 [node name="ZoneManager" type="Node2D" parent="MainScene"]
-script = ExtResource("6_ljg8q")
 
 [node name="InfoCom" type="Path2D" parent="MainScene/ZoneManager"]
 position = Vector2(-150, 30)
 curve = SubResource("Curve2D_81s5k")
 script = ExtResource("7_6atdx")
 
+[node name="Pathfinding" parent="MainScene/ZoneManager/InfoCom" instance=ExtResource("7_27y3g")]
+position = Vector2(-106, -4)
+rotation = -3.1271
+
 [node name="IT" type="Path2D" parent="MainScene/ZoneManager"]
 position = Vector2(275, -80)
 curve = SubResource("Curve2D_ljg8q")
 script = ExtResource("7_6atdx")
+
+[node name="Pathfinding" parent="MainScene/ZoneManager/IT" instance=ExtResource("7_27y3g")]
+position = Vector2(7, 86)
+rotation = 1.52735
+scale = Vector2(0.2, 0.2)
 
 [node name="Civil" type="Path2D" parent="MainScene/ZoneManager"]
 position = Vector2(-420, 175)
@@ -102,12 +99,5 @@ script = ExtResource("7_6atdx")
 position = Vector2(-345, -100)
 curve = SubResource("Curve2D_88d5u")
 script = ExtResource("7_6atdx")
-
-[node name="AuditTriggerArea" parent="MainScene" node_paths=PackedStringArray("collision_shape") instance=ExtResource("9_6atdx")]
-collision_shape = NodePath("CollisionShape2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainScene/AuditTriggerArea"]
-position = Vector2(-10, 34)
-shape = SubResource("CircleShape2D_27y3g")
 
 [connection signal="value_changed" from="MainScene/ConfidenceBar" to="." method="_on_confidence_bar_value_changed"]

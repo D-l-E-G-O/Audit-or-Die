@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Area2D
 class_name Auditor
 
 
@@ -7,7 +7,7 @@ enum Level {Junior, Senior, Manager, Director}
 const LEVEL_CONFIG: Dictionary[Level, Dictionary] = {
 	Level.Junior: {
 		"number_range": Vector2i(1, 3),
-		"value": 100,
+		"value": 1,
 		"corruption_proba": 0.15,
 	},
 	Level.Senior: {
