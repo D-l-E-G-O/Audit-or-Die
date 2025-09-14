@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dthnx8y6iq2v2"]
+
+[ext_resource type="Script" uid="uid://cntdosdmhd4b0" path="res://src/AuditTriggerArea/audit_trigger_area.gd" id="1_ttesj"]
+
+[node name="AuditTriggerArea" type="Area2D" node_paths=PackedStringArray("collision_shape")]
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_ttesj")
+collision_shape = NodePath("")

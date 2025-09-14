@@ -6,6 +6,10 @@ extends Node
 
 signal deploy_auditor(zone: Zone)
 
+signal add_pathfinding(auditor: Auditor, zone: Zone)
+
+signal trigger_audit_creation(auditor: Auditor)
+
 signal create_audit(audit_value: int, corruption_proba: float, zone: Zone)
 
 signal collect_audit(audit: Audit)
