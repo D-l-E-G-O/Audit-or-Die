@@ -1,11 +1,11 @@
 extends Node2D
 
 
-@onready var auditor_manager: Node2D = $MainScene/AuditorManager
-@onready var audit_manager: AuditManager = $MainScene/AuditManager
-@onready var confidence_bar: ConfidenceBar = $MainScene/ConfidenceBar
-@onready var stage: Label = $MainScene/Stage
-@onready var zone_manager: ZoneManager = $MainScene/ZoneManager
+@export var auditor_manager: AuditorManager
+@export var audit_manager: AuditManager
+@export var confidence_bar: ConfidenceBar
+@export var stage: Label
+@export var zone_manager: ZoneManager
 
 
 func _on_confidence_bar_value_changed(value: float) -> void:
