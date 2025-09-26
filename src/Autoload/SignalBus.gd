@@ -16,9 +16,20 @@ signal collect_audit(audit: Audit)
 
 signal free_audit(audit: Audit)
 
-signal add_confidence_bar_value(value: int)
+signal add_confidence_bar_value(value: int, zone: Zone)
 
 signal reached_max_confidence
 
+signal update_zone_stats(zone: Zone)
+
+signal update_info_com_stats
+
+signal update_it_stats
+
+signal update_civil_stats
+
+signal update_pharma_stats
+
+signal update_physics_stats
 
 @warning_ignore_restore("unused_signal")

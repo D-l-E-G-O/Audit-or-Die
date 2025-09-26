@@ -24,7 +24,7 @@ var stage: int = 1
 
 func _ready() -> void:
 	super()
-	SignalBus.add_confidence_bar_value.connect(add_value)
+	#SignalBus.add_confidence_bar_value.connect(add_value)
 	_update_confidence_bar_max_value()
 
 
