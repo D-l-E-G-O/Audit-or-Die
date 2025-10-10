@@ -10,6 +10,7 @@ const LIFETIME: float = 2.0
 const TRANSPARENCY_INCREMENT: float = 0.01
 
 var value: int = 0
+var assigned_zone: Zone
 var corrupted: bool = false
 
 
@@ -24,8 +25,9 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 
-func init_audit(audit_value: int, initial_position: Vector2) -> void:
+func init_audit(audit_value: int, zone: Zone, initial_position: Vector2) -> void:
 	value = audit_value
+	assigned_zone = zone
 	global_position = initial_position
 
 

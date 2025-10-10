@@ -13,13 +13,13 @@ func _ready() -> void:
 
 func _on_create_audit(audit_value: int, corruption_proba: float, zone: Zone) -> void:
 	var audit: Audit = AUDIT_SCENE.instantiate()
-	audit.init_audit(audit_value, zone.global_position)
+	audit.init_audit(audit_value, zone, zone.global_position)
 	audit.try_corrompre_audit(corruption_proba)
 	_spawn_audit(audit)
 
 
 func _on_collect_audit(audit: Audit) -> void:
-	SignalBus.add_confidence_bar_value.emit(audit.value)
+	SignalBus.add_confidence_bar_value.emit(audit.value, audit.assigned_zone)
 	SignalBus.free_audit.emit(audit)
 
 
