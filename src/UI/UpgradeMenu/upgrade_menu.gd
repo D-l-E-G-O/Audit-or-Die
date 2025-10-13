@@ -3,6 +3,11 @@ class_name UpgradeMenu
 
 
 @export var zone_manager: ZoneManager
+@export var info_com_overlay: Overlay
+@export var it_overlay: Overlay
+@export var civil_overlay: Overlay
+@export var pharma_overlay: Overlay
+@export var physics_overlay: Overlay
 
 @onready var confidence_info_com: Label = $MarginContainer/VBoxContainer/TabContainer/InfoCom/Confidence_InfoCom
 @onready var auditors_info_com: Label = $MarginContainer/VBoxContainer/TabContainer/InfoCom/Auditors_InfoCom

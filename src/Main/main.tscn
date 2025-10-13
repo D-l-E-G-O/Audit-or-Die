@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://ktxlgcw1c75"]
+[gd_scene load_steps=16 format=3 uid="uid://ktxlgcw1c75"]
 
 [ext_resource type="Script" uid="uid://dxyc6e3uk3xvm" path="res://src/Main/main.gd" id="1_qkh5l"]
 [ext_resource type="Texture2D" uid="uid://qb5otraedldr" path="res://assets/Map/map.png" id="2_81s5k"]
 [ext_resource type="Script" uid="uid://2yrni2yx52t" path="res://src/Auditor/auditor_manager.gd" id="3_ljg8q"]
 [ext_resource type="Script" uid="uid://b4udju6nwd18m" path="res://src/Audit/audit_manager.gd" id="3_umts7"]
-[ext_resource type="PackedScene" uid="uid://bcxbtmwayncwk" path="res://src/UI/ProgressionBar/confidence_bar.tscn" id="4_xsymy"]
 [ext_resource type="Script" uid="uid://bqhsinaxeam57" path="res://src/Main/areaOverlay.gd" id="5_88d5u"]
 [ext_resource type="Script" uid="uid://bd5tt13hv8ysp" path="res://src/Zone/zone_manager.gd" id="6_ljg8q"]
 [ext_resource type="Script" uid="uid://dv17uj2f40j2p" path="res://src/Zone/zone.gd" id="7_6atdx"]
@@ -44,13 +43,11 @@ point_count = 17
 [sub_resource type="CircleShape2D" id="CircleShape2D_27y3g"]
 radius = 30.0
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("auditor_manager", "audit_manager", "confidence_bar", "stage", "zone_manager")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("auditor_manager", "audit_manager", "zone_manager")]
 process_mode = 3
 script = ExtResource("1_qkh5l")
 auditor_manager = NodePath("MainScene/AuditorManager")
 audit_manager = NodePath("MainScene/AuditManager")
-confidence_bar = NodePath("MainScene/UI/ConfidenceBar")
-stage = NodePath("MainScene/UI/Stage")
 zone_manager = NodePath("MainScene/ZoneManager")
 
 [node name="MainScene" type="Node2D" parent="."]
@@ -70,54 +67,50 @@ zoom = Vector2(0.6, 0.6)
 
 [node name="OverlayZone" type="Node2D" parent="MainScene"]
 
-[node name="ITPoly" type="Polygon2D" parent="MainScene/OverlayZone"]
+[node name="ITOverlay" type="Area2D" parent="MainScene/OverlayZone" node_paths=PackedStringArray("tab", "overlay_polygon")]
+script = ExtResource("5_88d5u")
+tab = NodePath("../../UI/UpgradeMenuContainer/UpgradeMenu/MarginContainer/VBoxContainer/TabContainer/IT")
+overlay_polygon = NodePath("ITPoly")
+
+[node name="ITPoly" type="Polygon2D" parent="MainScene/OverlayZone/ITOverlay"]
+color = Color(1, 1, 0, 0.294118)
 polygon = PackedVector2Array(234, -175, 310, -177, 313, -3, 238, 0)
 
-[node name="ITArea" type="Area2D" parent="MainScene/OverlayZone/ITPoly"]
+[node name="PharmaOverlay" type="Area2D" parent="MainScene/OverlayZone" node_paths=PackedStringArray("tab", "overlay_polygon")]
 script = ExtResource("5_88d5u")
+tab = NodePath("../../UI/UpgradeMenuContainer/UpgradeMenu/MarginContainer/VBoxContainer/TabContainer/Pharma")
+overlay_polygon = NodePath("PharmaPoly")
 
-[node name="ITColliArea" type="CollisionPolygon2D" parent="MainScene/OverlayZone/ITPoly/ITArea"]
-position = Vector2(-184, 25)
-
-[node name="PhramaPoly" type="Polygon2D" parent="MainScene/OverlayZone"]
+[node name="PharmaPoly" type="Polygon2D" parent="MainScene/OverlayZone/PharmaOverlay"]
+color = Color(1, 1, 0, 0.294118)
 polygon = PackedVector2Array(414, -541, 394, -511, 222, -502, 225, -430, 400, -430, 386, -390, 406, -347, 226, -346, 226, -265, 389, -265, 496, -103, 565, -138, 468, -304, 508, -312, 537, -350, 604, -238, 662, -269, 597, -393, 660, -511, 650, -536, 600, -540, 530, -420, 502, -454, 461, -459, 502, -538)
 
-[node name="PharmaArea" type="Area2D" parent="MainScene/OverlayZone/PhramaPoly"]
+[node name="InfoComOverlay" type="Area2D" parent="MainScene/OverlayZone" node_paths=PackedStringArray("tab", "overlay_polygon")]
 script = ExtResource("5_88d5u")
+tab = NodePath("../../UI/UpgradeMenuContainer/UpgradeMenu/MarginContainer/VBoxContainer/TabContainer/InfoCom")
+overlay_polygon = NodePath("InfoComPoly")
 
-[node name="PharmaArea" type="CollisionPolygon2D" parent="MainScene/OverlayZone/PhramaPoly/PharmaArea"]
-position = Vector2(-184, 25)
+[node name="InfoComPoly" type="Polygon2D" parent="MainScene/OverlayZone/InfoComOverlay"]
+color = Color(1, 1, 0, 0.294118)
+polygon = PackedVector2Array(-244, -8, -246, 33, -301, 33, -300, 85, -240, 86, -240, 73, -41, 72, -41, 59, 23, 57, 23, 67, 172, 68, 171, -83, 41, -84, 40, -64, 19, -67, 17, -160, -96, -158, -95, -63, -66, -58, -61, -9)
 
-[node name="ICTCPoly" type="Polygon2D" parent="MainScene/OverlayZone"]
-position = Vector2(-164, 101)
-polygon = PackedVector2Array(203, -183, 333, -180, 339, -38, 189, -36, 189, -50, 119, -49, 119, -33, -80, -31, -81, -109, 99, -107, 103, -157, 68, -160, 70, -259, 182, -259, 180, -165, 201, -165)
-
-[node name="ICTCArea" type="Area2D" parent="MainScene/OverlayZone/ICTCPoly"]
+[node name="PhysicsOverlay" type="Area2D" parent="MainScene/OverlayZone" node_paths=PackedStringArray("tab", "overlay_polygon")]
 script = ExtResource("5_88d5u")
+tab = NodePath("../../UI/UpgradeMenuContainer/UpgradeMenu/MarginContainer/VBoxContainer/TabContainer/Physics")
+overlay_polygon = NodePath("PhysicsPoly")
 
-[node name="ICTCColliArea" type="CollisionPolygon2D" parent="MainScene/OverlayZone/ICTCPoly/ICTCArea"]
-position = Vector2(-184, 25)
-
-[node name="ChimiePoly" type="Polygon2D" parent="MainScene/OverlayZone"]
+[node name="PhysicsPoly" type="Polygon2D" parent="MainScene/OverlayZone/PhysicsOverlay"]
+color = Color(1, 1, 0, 0.294118)
 polygon = PackedVector2Array(-257, -68, -425, -62, -428, -90, -444, -89, -443, -31, -515, -28, -514, -114, -445, -115, -443, -101, -427, -101, -427, -141, -257, -141)
-uv = PackedVector2Array(-257, -68, -425, -62, -428, -90, -444, -89, -443, -31, -515, -28, -514, -114, -445, -115, -443, -101, -427, -101, -427, -141, -257, -141)
 
-[node name="ChimieArea" type="Area2D" parent="MainScene/OverlayZone/ChimiePoly"]
+[node name="CivilOverlay" type="Area2D" parent="MainScene/OverlayZone" node_paths=PackedStringArray("tab", "overlay_polygon")]
 script = ExtResource("5_88d5u")
+tab = NodePath("../../UI/UpgradeMenuContainer/UpgradeMenu/MarginContainer/VBoxContainer/TabContainer/Civil")
+overlay_polygon = NodePath("CivilPoly")
 
-[node name="ChimieColliArea" type="CollisionPolygon2D" parent="MainScene/OverlayZone/ChimiePoly/ChimieArea"]
-position = Vector2(-184, 25)
-
-[node name="CivilPoly" type="Polygon2D" parent="MainScene/OverlayZone"]
-position = Vector2(-698, 228)
-polygon = PackedVector2Array(234, -175, 310, -177, 321, 64, 233, 67, 238, 45, 203, 45, 204, 146, 162, 149, 164, 174, 2, 174, -4, -41, 131, -39, 129, -94, 156, -94, 160, -79, 194, -80, 199, -2, 233.274, 0.597046)
-uv = PackedVector2Array(234, -175, 310, -177, 321, 64, 233, 67, 238, 45, 203, 45, 204, 146, 162, 149, 164, 174, 2, 174, -4, -41, 131, -39, 129, -94, 156, -94, 160, -79, 194, -80, 199, -2, 233.274, 0.597046)
-
-[node name="CivilArea" type="Area2D" parent="MainScene/OverlayZone/CivilPoly"]
-script = ExtResource("5_88d5u")
-
-[node name="CivilColliArea" type="CollisionPolygon2D" parent="MainScene/OverlayZone/CivilPoly/CivilArea"]
-position = Vector2(-184, 25)
+[node name="CivilPoly" type="Polygon2D" parent="MainScene/OverlayZone/CivilOverlay"]
+color = Color(1, 1, 0, 0.294118)
+polygon = PackedVector2Array(-698, 191, -569, 191, -572, 137, -543, 131, -537, 144, -505, 144, -499, 220, -465, 222, -465, 58, -388, 56, -381, 285, -460, 288, -463, 273, -496, 272, -496, 373, -539, 374, -539, 395, -694, 403)
 
 [node name="ZoneManager" type="Node2D" parent="MainScene"]
 script = ExtResource("6_ljg8q")
@@ -171,23 +164,6 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 grow_vertical = 2
 
-[node name="ConfidenceBar" parent="MainScene/UI" instance=ExtResource("4_xsymy")]
-layout_mode = 0
-offset_left = -874.0
-offset_top = -527.0
-offset_right = -832.0
-offset_bottom = -516.0
-scale = Vector2(12, 12)
-
-[node name="Stage" type="Label" parent="MainScene/UI"]
-layout_mode = 0
-offset_left = -885.0
-offset_top = -385.0
-offset_right = -322.0
-offset_bottom = -275.0
-theme_override_font_sizes/font_size = 80
-text = "Stage 1 (0/100)"
-
 [node name="UpgradeMenuContainer" type="MarginContainer" parent="MainScene/UI"]
 layout_mode = 0
 offset_left = 392.0
@@ -196,8 +172,12 @@ offset_right = 961.0
 offset_bottom = 534.0
 metadata/_edit_use_anchors_ = true
 
-[node name="UpgradeMenu" parent="MainScene/UI/UpgradeMenuContainer" node_paths=PackedStringArray("zone_manager") instance=ExtResource("9_88d5u")]
+[node name="UpgradeMenu" parent="MainScene/UI/UpgradeMenuContainer" node_paths=PackedStringArray("zone_manager", "it_overlay", "civil_overlay", "pharma_overlay", "physics_overlay") instance=ExtResource("9_88d5u")]
 layout_mode = 2
 zone_manager = NodePath("../../../ZoneManager")
+it_overlay = NodePath("../../../OverlayZone/ITOverlay")
+civil_overlay = NodePath("../../../OverlayZone/CivilOverlay")
+pharma_overlay = NodePath("../../../OverlayZone/PharmaOverlay")
+physics_overlay = NodePath("../../../OverlayZone/PhysicsOverlay")
 
-[connection signal="value_changed" from="MainScene/UI/ConfidenceBar" to="." method="_on_confidence_bar_value_changed"]
+[editable path="MainScene/UI/UpgradeMenuContainer/UpgradeMenu"]

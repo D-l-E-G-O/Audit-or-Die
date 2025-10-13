@@ -32,4 +32,9 @@ signal update_pharma_stats
 
 signal update_physics_stats
 
+signal left_mouse_button_pressed
+
+signal overlay_clicked(overlay_id: int)
+
+
 @warning_ignore_restore("unused_signal")
