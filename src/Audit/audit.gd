@@ -1,13 +1,14 @@
 extends CharacterBody2D
 class_name Audit
 
-
 @onready var texture_button: TextureButton = $TextureButton
 @onready var timer: Timer = $Timer
 
 const SPEED: int = 30
 const LIFETIME: float = 2.0
 const TRANSPARENCY_INCREMENT: float = 0.01
+const NORMAL_TEXTURE: Texture2D = preload("res://assets/AuditPicture/good_audit.png")
+const CORRUPTED_TEXTURE: Texture2D = preload("res://assets/AuditPicture/bad_audit.png")
 
 var value: int = 0
 var assigned_zone: Zone
@@ -32,11 +33,16 @@ func init_audit(audit_value: int, zone: Zone, initial_position: Vector2) -> void
 
 
 func try_corrompre_audit(corruption_proba: float) -> void:
+	if texture_button == null:
+		await ready  # attend que _ready() soit exécuté
 	var random: float = randf()
 	if random <= corruption_proba:
 		corrupted = true
 		value *= -1
-		modulate = Color.RED
+		#modulate = Color.RED
+		texture_button.texture_normal = CORRUPTED_TEXTURE
+	else:
+		texture_button.texture_normal = NORMAL_TEXTURE
 
 
 func _become_transparent() -> void:
