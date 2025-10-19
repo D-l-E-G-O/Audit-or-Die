@@ -1,10 +1,11 @@
-extends TextureProgressBar
+extends Range
 class_name ProgressionBar
 
 
+@export var initial_value: float = 0.0
 @export var decrease_bar: TextureProgressBar
 
-signal maximum_reached
+signal maximum_reached(cycles: int)
 
 const TWEEN_DURATION: float = 0.5
 
@@ -12,13 +13,21 @@ var _tween: Tween
 
 
 func _ready() -> void:
+	allow_greater = true
+	if decrease_bar:
+		decrease_bar.step = self.step
 	reset(true)
 
 
 func add_value(val: float) -> void:
 	value += val
-	if value == max_value:
-		maximum_reached.emit()
+	if value >= max_value:
+		maximum_reached.emit(value /  max_value)
+		value = floori(value) %  floori(max_value)
+
+
+func apply_ratio(_ratio: float) -> void:
+	add_value((value * _ratio) - value)
 
 
 func update_decrease_bar() -> void:
@@ -37,13 +46,13 @@ func reset(no_signal: bool) -> void:
 	_reset_bar(decrease_bar, no_signal)
 
 
-static func _reset_bar(bar: TextureProgressBar, no_signal: bool) -> void:
+func _reset_bar(bar: Range, no_signal: bool) -> void:
 	if !bar:
 		return
 	if no_signal:
-		bar.set_value_no_signal(bar.min_value)
+		bar.set_value_no_signal(initial_value)
 	else:
-		bar.value = bar.min_value
+		bar.value = initial_value
 
 
 func _get_tween() -> Tween:
