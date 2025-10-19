@@ -2,7 +2,7 @@ extends Control
 class_name DebugPanel
 
 
-@export var debug_source: DebugSource
+@export var debug_source: DebugComponent
 var container: VBoxContainer
 
 
@@ -12,7 +12,7 @@ func _ready() -> void:
 	container = VBoxContainer.new()
 	add_child(container)
 	if !debug_source:
-		debug_source = get_parent() as DebugSource
+		debug_source = get_parent() as DebugComponent
 	DebugManager.toggle_debug.connect(_on_toggle_debug_mode)
 	if debug_source:
 		debug_source.debug_values_changed.connect(_update_labels)
