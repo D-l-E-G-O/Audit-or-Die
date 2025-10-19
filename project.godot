@@ -20,6 +20,7 @@ config/icon="uid://djo6lnjibj8jm"
 
 SignalBus="*res://src/Autoload/SignalBus.gd"
 DebugManager="*res://src/Autoload/DebugManager.gd"
+Global="*res://src/Autoload/Global.gd"
 
 [file_customization]
 

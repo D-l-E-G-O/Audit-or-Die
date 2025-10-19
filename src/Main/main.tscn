@@ -36,10 +36,10 @@ initial_value = 0.0
 
 [node name="UpgradeMenu" parent="UI" instance=ExtResource("4_xsymy")]
 layout_mode = 1
-anchor_left = 0.741319
-anchor_top = 0.294753
-anchor_right = 1.24392
-anchor_bottom = 1.1358
+offset_left = 801.0
+offset_top = 161.0
+offset_right = 295.0
+offset_bottom = 161.0
 scale = Vector2(0.5, 0.5)
 
 [node name="ClickBarChain" parent="UI" instance=ExtResource("4_koglj")]

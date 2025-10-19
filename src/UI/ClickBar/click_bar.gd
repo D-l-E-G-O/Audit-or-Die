@@ -17,9 +17,12 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
-	progress_bar.add_value(ceili(progress_bar.max_value / required_clicks))
+	progress_bar.add_value(progress_bar.max_value * (Global.get_clicks() / required_clicks) + 0.01)
 
 
 func _on_progress_bar_maximum_reached(cycles: int) -> void:
-	progress_bar.reset(true)
 	cycle_completed.emit(get_instance_id(), cycles)
+
+
+func reset(no_signal: bool) -> void:
+	progress_bar.reset(no_signal)

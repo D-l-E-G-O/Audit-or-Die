@@ -20,10 +20,12 @@ func _ready() -> void:
 
 
 func add_value(val: float) -> void:
-	value += val
-	if value >= max_value:
-		maximum_reached.emit(value /  max_value)
-		value = floori(value) %  floori(max_value)
+	var total: float = value + val
+	if total >= max_value:
+		maximum_reached.emit(total / max_value)
+		value = floori(total) % floori(max_value)
+	else:
+		value = total
 
 
 func apply_ratio(_ratio: float) -> void:

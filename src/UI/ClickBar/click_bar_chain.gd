@@ -57,11 +57,13 @@ func _on_cycle_completed(id: int, cycles: int) -> void:
 	if click_bar_index == -1:
 		push_error("Click Bar not found")
 		return
+	if click_bar_index > 0:
+		cycles = min(cycles, cycles_list[click_bar_index])
 	if click_bar_index < chain.size() - 1:
 		add_cycle(click_bar_index + 1, cycles)
 	else:
 		print("Completed %d cycles !" % cycles)
-	end_cycle(click_bar_index)
+	end_cycle(click_bar_index, cycles)
 
 
 func add_cycle(next_index: int, cycles: int) -> void:
@@ -71,10 +73,12 @@ func add_cycle(next_index: int, cycles: int) -> void:
 	debug_sources[next_index-1].notify_debug_update()
 
 
-func end_cycle(click_bar_index: int) -> void:
+func end_cycle(click_bar_index: int, cycles: int) -> void:
 	if click_bar_index == 0:
 		return
-	cycles_list[click_bar_index] -= 1
+	cycles_list[click_bar_index] -= cycles
 	if cycles_list[click_bar_index] <= 0:
-		chain[click_bar_index].disabled = true
+		var click_bar: ClickBar = chain[click_bar_index]
+		click_bar.call_deferred("reset", true)
+		click_bar.disabled = true
 	debug_sources[click_bar_index-1].notify_debug_update()

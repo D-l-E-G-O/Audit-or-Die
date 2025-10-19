@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0rlm6bsdqlkf"]
+
+[ext_resource type="Script" uid="uid://dde4hal3g2kua" path="res://src/UI/UpgradeMenu/upgrade_button.gd" id="1_rf4r5"]
+
+[node name="UpgradeButton" type="VBoxContainer"]
+clip_contents = true
+offset_right = 371.0
+offset_bottom = 229.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+alignment = 1
+script = ExtResource("1_rf4r5")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "Upgrade"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="Level" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Level: 0"
+
+[node name="Cost" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Cost: 0"
+
+[node name="Value" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Value: 0"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
