@@ -17,7 +17,7 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
-	progress_bar.add_value(progress_bar.max_value / required_clicks)
+	progress_bar.add_value(ceili(progress_bar.max_value / required_clicks))
 
 
 func _on_progress_bar_maximum_reached(cycles: int) -> void:

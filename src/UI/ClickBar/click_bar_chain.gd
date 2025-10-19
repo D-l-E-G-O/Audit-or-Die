@@ -5,6 +5,7 @@ class_name ClickBarChain
 var chain: Array[ClickBar] = []
 var cycles_list: Array[int] = []
 var identifiers: Array[int] = []
+var debug_sources: Array[DebugSource] = []
 
 
 func _ready() -> void:
@@ -12,6 +13,7 @@ func _ready() -> void:
 	create_cycles_list()
 	get_identifiers()
 	link_click_bars()
+	attach_debug_panels()
 
 
 func create_chain() -> void:
@@ -24,6 +26,13 @@ func create_chain() -> void:
 func create_cycles_list() -> void:
 	for i: int in range(0, chain.size()):
 		cycles_list.append(0)
+		var debug_source: DebugSource = DebugSource.new()
+		var index: int = i
+		debug_source.get_debug_values_callable = func() -> Array[DebugValue]:
+			return [DebugValue.new("Cycles", func() -> int:
+				return cycles_list[index]
+				)]
+		debug_sources.append(debug_source)
 
 
 func get_identifiers() -> void:
@@ -53,7 +62,7 @@ func add_cycle(next_index: int, cycles: int) -> void:
 	cycles_list[next_index] += cycles
 	if cycles_list[next_index] > 0:
 		chain[next_index].disabled = false
-	#print("Index : %d, cycles : %d" % [next_index, cycles_list[next_index]])
+	debug_sources[next_index].notify_debug_update()
 
 
 func end_cycle(click_bar_index: int) -> void:
@@ -62,4 +71,12 @@ func end_cycle(click_bar_index: int) -> void:
 	cycles_list[click_bar_index] -= 1
 	if cycles_list[click_bar_index] <= 0:
 		chain[click_bar_index].disabled = true
-	#print("Index : %d, cycles : %d" % [click_bar_index, cycles_list[click_bar_index]])
+	debug_sources[click_bar_index].notify_debug_update()
+
+
+func attach_debug_panels() -> void:
+	for i in range(1, chain.size()):
+		var panel: DebugPanel = DebugPanel.new()
+		panel.debug_source = debug_sources[i]
+		panel.position.y = chain[i].size.y
+		chain[i].add_child(panel)
