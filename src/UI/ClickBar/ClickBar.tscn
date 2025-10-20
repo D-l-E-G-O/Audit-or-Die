@@ -23,6 +23,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxEmpty_2xlw5")
 theme_override_styles/fill = SubResource("StyleBoxFlat_144cp")
+value = 50.0
 show_percentage = false
 script = ExtResource("2_pkfu1")
 

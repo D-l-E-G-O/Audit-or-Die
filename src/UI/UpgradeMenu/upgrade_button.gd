@@ -1,3 +1,4 @@
+@tool
 extends Control
 class_name UpgradeButton
 
@@ -11,7 +12,14 @@ signal upgraded
 @onready var value_label: Label = $GridContainer/Value
 
 
+func _process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		if upgrade:
+			button.text = upgrade.label
+
+
 func _ready() -> void:
+	set_process(false)
 	if upgrade:
 		button.text = upgrade.label
 		_update_labels()

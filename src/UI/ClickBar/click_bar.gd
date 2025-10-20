@@ -1,3 +1,4 @@
+@tool
 extends Button
 class_name ClickBar
 
@@ -10,7 +11,17 @@ signal cycle_completed(id: int, cycles: int)
 @onready var progress_bar: ProgressionBar = $ProgressBar
 
 
+func _process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		update_color()
+
+
 func _ready() -> void:
+	set_process(false)
+	update_color()
+
+
+func update_color() -> void:
 	var stylebox = StyleBoxFlat.new()
 	stylebox.bg_color = color
 	progress_bar.add_theme_stylebox_override("fill", stylebox)

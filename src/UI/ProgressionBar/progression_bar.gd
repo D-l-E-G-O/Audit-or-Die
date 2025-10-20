@@ -13,6 +13,7 @@ var _tween: Tween
 
 
 func _ready() -> void:
+	set_value_no_signal(initial_value)
 	allow_greater = true
 	if decrease_bar:
 		decrease_bar.step = self.step
