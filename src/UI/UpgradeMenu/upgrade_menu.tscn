@@ -6,6 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_qy5x6"]
 script = ExtResource("3_7akbo")
+level = 0
 label = "Clicks"
 description = "Number of clicks  per click"
 base_cost = 10
@@ -16,6 +17,7 @@ metadata/_custom_type_script = "uid://b5l68tjgu4cfj"
 
 [sub_resource type="Resource" id="Resource_7akbo"]
 script = ExtResource("3_7akbo")
+level = 0
 label = "Auditors"
 description = ""
 base_cost = 10

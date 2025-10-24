@@ -62,7 +62,7 @@ func _on_cycle_completed(id: int, cycles: int) -> void:
 	if click_bar_index < chain.size() - 1:
 		add_cycle(click_bar_index + 1, cycles)
 	else:
-		print("Completed %d cycles !" % cycles)
+		SignalBus.finish_audit.emit(cycles)
 	end_cycle(click_bar_index, cycles)
 
 

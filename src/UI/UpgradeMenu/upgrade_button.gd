@@ -37,6 +37,8 @@ func _on_button_pressed() -> void:
 
 
 func _update_labels() -> void:
+	if Engine.is_editor_hint():
+		return
 	level_label.text = "Level: %d" % upgrade.level
 	cost_label.text = "Cost: %d" % upgrade.get_cost()
 	value_label.text = "Value: %0.2f" % snappedf(upgrade.get_effect(), 0.1)

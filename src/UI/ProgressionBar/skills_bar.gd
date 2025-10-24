@@ -2,13 +2,20 @@ extends ProgressionBar
 class_name SkillsBar
 
 
-#var decrease_per_second: float = 5.0
+@onready var label: Label = $Label
+
+var level: int = 0
 
 
 func _ready() -> void:
 	super()
-	SignalBus.add_skills_bar_value.connect(add_value)
+	set_max_value(pow(2, level))
+	reset(true)
+	SignalBus.finish_audit.connect(add_value)
 
 
-#func _physics_process(delta: float) -> void:
-	#add_value(-decrease_per_second * delta)
+func _on_maximum_reached(cycles: int) -> void:
+	level += cycles
+	set_max_value(pow(2, level))
+	reset_with_tween()
+	label.text = "Skills level: %d" % level
