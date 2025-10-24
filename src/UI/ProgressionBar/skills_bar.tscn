@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcxbtmwayncwk"]
+
+[ext_resource type="Texture2D" uid="uid://cetggvombrkr4" path="res://assets/ProgressBar/progressbar_over.png" id="1_gmq15"]
+[ext_resource type="Texture2D" uid="uid://jqg5s4dtwjq0" path="res://assets/ProgressBar/progressbar_yellow.png" id="2_hxshy"]
+[ext_resource type="Script" uid="uid://b7e06ro4t0ly2" path="res://src/UI/ProgressionBar/skills_bar.gd" id="3_ij2oq"]
+[ext_resource type="Texture2D" uid="uid://bglbk6203pab5" path="res://assets/ProgressBar/progressbar_under.png" id="4_wyyql"]
+[ext_resource type="Texture2D" uid="uid://d2tkyilig0u21" path="res://assets/ProgressBar/progressbar_white.png" id="5_8pjbd"]
+
+[node name="SkillsBar" type="TextureProgressBar" node_paths=PackedStringArray("decrease_bar")]
+offset_left = -21.0
+offset_right = 21.0
+offset_bottom = 11.0
+size_flags_horizontal = 0
+step = 0.01
+value = 100.0
+texture_over = ExtResource("1_gmq15")
+texture_progress = ExtResource("2_hxshy")
+texture_progress_offset = Vector2(5, 4)
+script = ExtResource("3_ij2oq")
+initial_value = 100.0
+decrease_bar = NodePath("DecreaseBar")
+
+[node name="DecreaseBar" type="TextureProgressBar" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 60.0
+texture_under = ExtResource("4_wyyql")
+texture_progress = ExtResource("5_8pjbd")
+texture_progress_offset = Vector2(5, 4)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -13.0
+offset_top = 10.0
+offset_right = 250.0
+offset_bottom = 65.0
+grow_horizontal = 2
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 40
+text = "Skills Level : 0"
+
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]

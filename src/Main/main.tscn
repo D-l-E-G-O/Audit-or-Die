@@ -1,183 +1,50 @@
-[gd_scene load_steps=16 format=3 uid="uid://ktxlgcw1c75"]
+[gd_scene load_steps=5 format=3 uid="uid://ktxlgcw1c75"]
 
 [ext_resource type="Script" uid="uid://dxyc6e3uk3xvm" path="res://src/Main/main.gd" id="1_qkh5l"]
-[ext_resource type="Texture2D" uid="uid://qb5otraedldr" path="res://assets/Map/map.png" id="2_81s5k"]
-[ext_resource type="Script" uid="uid://2yrni2yx52t" path="res://src/Auditor/auditor_manager.gd" id="3_ljg8q"]
-[ext_resource type="Script" uid="uid://b4udju6nwd18m" path="res://src/Audit/audit_manager.gd" id="3_umts7"]
-[ext_resource type="Script" uid="uid://bqhsinaxeam57" path="res://src/Main/areaOverlay.gd" id="5_88d5u"]
-[ext_resource type="Script" uid="uid://bd5tt13hv8ysp" path="res://src/Zone/zone_manager.gd" id="6_ljg8q"]
-[ext_resource type="Script" uid="uid://dv17uj2f40j2p" path="res://src/Zone/zone.gd" id="7_6atdx"]
-[ext_resource type="PackedScene" uid="uid://dthnx8y6iq2v2" path="res://src/AuditTriggerArea/audit_trigger_area.tscn" id="9_6atdx"]
-[ext_resource type="PackedScene" uid="uid://by7mcwuv62vv0" path="res://src/UI/UpgradeMenu/upgrade_menu.tscn" id="9_88d5u"]
+[ext_resource type="PackedScene" uid="uid://bcxbtmwayncwk" path="res://src/UI/ProgressionBar/skills_bar.tscn" id="2_wkb84"]
+[ext_resource type="PackedScene" uid="uid://dfl6qpxnh8bbk" path="res://src/UI/ClickBar/ClickBarChain.tscn" id="4_koglj"]
+[ext_resource type="PackedScene" uid="uid://by7mcwuv62vv0" path="res://src/UI/UpgradeMenu/upgrade_menu.tscn" id="4_xsymy"]
 
-[sub_resource type="Curve2D" id="Curve2D_81s5k"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 97, -24, 0, 0, 0, 0, -94, -29, 0, 0, 0, 0, -94.3918, 36.7028, 0, 0, 0, 0, 97, 37, 0, 0, 0, 0, 139, 3, 0, 0, 0, 0, 97, -23)
-}
-point_count = 6
-
-[sub_resource type="Curve2D" id="Curve2D_ljg8q"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 2, 74, 0, 0, 0, 0, -34.6281, 69.3982, 0, 0, 0, 0, -33.0176, -85.2108, 0, 0, 0, 0, 35, -87, 0, 0, 0, 0, 36, 76, 0, 0, 0, 0, 4, 74, 0, 0, 0, 0, 9, 132, 0, 0, 0, 0, -56, 129, 0, 0, 0, 0, -54, 172, 0, 0, 0, 0, -268, 169, 0, 0, 0, 0, -286, 118, 0, 0, 0, 0, -268, 172, 0, 0, 0, 0, -52, 174, 0, 0, 0, 0, -49, 127, 0, 0, 0, 0, 7, 127, 0, 0, 0, 0, 4, 74)
-}
-point_count = 16
-
-[sub_resource type="Curve2D" id="Curve2D_27y3g"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -8, -118, 0, 0, 0, 0, 27, -107, 0, 0, 0, 0, 34, 108, 0, 0, 0, 0, -32.1478, 102.68, 0, 0, 0, 0, -31, -102, 0, 0, 0, 0, -8, -123, 0, 0, 0, 0, 95, -124, 0, 0, 0, 0, 103, 114, 0, 0, 0, 0, 287, 6, 0, 0, 0, 0, 412, 3, 0, 0, 0, 0, 409, -139, 0, 0, 0, 0, 100, -147, 0, 0, 0, 0, 93, -121, 0, 0, 0, 0, -10, -123)
-}
-point_count = 14
-
-[sub_resource type="Curve2D" id="Curve2D_6atdx"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -10, -4, 0, 0, 0, 0, 107.137, -33.061, 0, 0, 0, 0, 171.558, 103.832, 0, 0, 0, 0, 131, 125, 0, 0, 0, 0, 68, 9, 0, 0, 0, 0, -28, 51, 0, 0, 0, 0, 77, 233, 0, 0, 0, 0, 33, 258, 0, 0, 0, 0, -66.798, 102.222, 0, 0, 0, 0, -218, 105, 0, 0, 0, 0, -221, 51, 0, 0, 0, 0, -34.5878, 42.633, 0, 0, 0, 0, -14, 1, 0, 0, 0, 0, -89, 2, 0, 0, 0, 0, -279, 2, 0, 0, 0, 0, -281, 72, 0, 0, 0, 0, -622, 75, 0, 0, 0, 0, -619, 105, 0, 0, 0, 0, -500, 223, 0, 0, 0, 0, -474, 416, 0, 0, 0, 0, -502, 215, 0, 0, 0, 0, -618, 104, 0, 0, 0, 0, -621, 75, 0, 0, 0, 0, -283, 70, 0, 0, 0, 0, -278, 4, 0, 0, 0, 0, -12, -1)
-}
-point_count = 26
-
-[sub_resource type="Curve2D" id="Curve2D_88d5u"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 36, 25, 0, 0, 0, 0, 78, 25, 0, 0, 0, 0, 80, -33, 0, 0, 0, 0, -75, -33, 0, 0, 0, 0, -83, 4, 0, 0, 0, 0, -154, -2, 0, 0, 0, 0, -157, 62, 0, 0, 0, 0, -109, 60, 0, 0, 0, 0, -97, 4, 0, 0, 0, 0, -57, 25, 0, 0, 0, 0, 35, 27, 0, 0, 0, 0, 36, 59, 0, 0, 0, 0, 300, 60, 0, 0, 0, 0, 334, 138, 0, 0, 0, 0, 300, 60, 0, 0, 0, 0, 36, 60, 0, 0, 0, 0, 36, 25)
-}
-point_count = 17
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_27y3g"]
-radius = 30.0
-
-[node name="Main" type="Node2D" node_paths=PackedStringArray("auditor_manager", "audit_manager", "zone_manager")]
+[node name="Main" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_qkh5l")
-auditor_manager = NodePath("MainScene/AuditorManager")
-audit_manager = NodePath("MainScene/AuditManager")
-zone_manager = NodePath("MainScene/ZoneManager")
 
-[node name="MainScene" type="Node2D" parent="."]
-process_mode = 1
-
-[node name="Map" type="Sprite2D" parent="MainScene"]
-texture = ExtResource("2_81s5k")
-
-[node name="AuditorManager" type="Node2D" parent="MainScene"]
-script = ExtResource("3_ljg8q")
-
-[node name="AuditManager" type="Node2D" parent="MainScene"]
-script = ExtResource("3_umts7")
-
-[node name="Camera2D" type="Camera2D" parent="MainScene"]
-zoom = Vector2(0.6, 0.6)
-
-[node name="OverlayZone" type="Node2D" parent="MainScene"]
-
-[node name="ITOverlay" type="Area2D" parent="MainScene/OverlayZone" node_paths=PackedStringArray("tab", "overlay_polygon")]
-script = ExtResource("5_88d5u")
-tab = NodePath("../../UI/UpgradeMenuContainer/UpgradeMenu/MarginContainer/VBoxContainer/TabContainer/IT")
-overlay_polygon = NodePath("ITPoly")
-
-[node name="ITPoly" type="Polygon2D" parent="MainScene/OverlayZone/ITOverlay"]
-color = Color(1, 1, 0, 0.294118)
-polygon = PackedVector2Array(234, -175, 310, -177, 313, -3, 238, 0)
-
-[node name="PharmaOverlay" type="Area2D" parent="MainScene/OverlayZone" node_paths=PackedStringArray("tab", "overlay_polygon")]
-script = ExtResource("5_88d5u")
-tab = NodePath("../../UI/UpgradeMenuContainer/UpgradeMenu/MarginContainer/VBoxContainer/TabContainer/Pharma")
-overlay_polygon = NodePath("PharmaPoly")
-
-[node name="PharmaPoly" type="Polygon2D" parent="MainScene/OverlayZone/PharmaOverlay"]
-color = Color(1, 1, 0, 0.294118)
-polygon = PackedVector2Array(414, -541, 394, -511, 222, -502, 225, -430, 400, -430, 386, -390, 406, -347, 226, -346, 226, -265, 389, -265, 496, -103, 565, -138, 468, -304, 508, -312, 537, -350, 604, -238, 662, -269, 597, -393, 660, -511, 650, -536, 600, -540, 530, -420, 502, -454, 461, -459, 502, -538)
-
-[node name="InfoComOverlay" type="Area2D" parent="MainScene/OverlayZone" node_paths=PackedStringArray("tab", "overlay_polygon")]
-script = ExtResource("5_88d5u")
-tab = NodePath("../../UI/UpgradeMenuContainer/UpgradeMenu/MarginContainer/VBoxContainer/TabContainer/InfoCom")
-overlay_polygon = NodePath("InfoComPoly")
-
-[node name="InfoComPoly" type="Polygon2D" parent="MainScene/OverlayZone/InfoComOverlay"]
-color = Color(1, 1, 0, 0.294118)
-polygon = PackedVector2Array(-244, -8, -246, 33, -301, 33, -300, 85, -240, 86, -240, 73, -41, 72, -41, 59, 23, 57, 23, 67, 172, 68, 171, -83, 41, -84, 40, -64, 19, -67, 17, -160, -96, -158, -95, -63, -66, -58, -61, -9)
-
-[node name="PhysicsOverlay" type="Area2D" parent="MainScene/OverlayZone" node_paths=PackedStringArray("tab", "overlay_polygon")]
-script = ExtResource("5_88d5u")
-tab = NodePath("../../UI/UpgradeMenuContainer/UpgradeMenu/MarginContainer/VBoxContainer/TabContainer/Physics")
-overlay_polygon = NodePath("PhysicsPoly")
-
-[node name="PhysicsPoly" type="Polygon2D" parent="MainScene/OverlayZone/PhysicsOverlay"]
-color = Color(1, 1, 0, 0.294118)
-polygon = PackedVector2Array(-257, -68, -425, -62, -428, -90, -444, -89, -443, -31, -515, -28, -514, -114, -445, -115, -443, -101, -427, -101, -427, -141, -257, -141)
-
-[node name="CivilOverlay" type="Area2D" parent="MainScene/OverlayZone" node_paths=PackedStringArray("tab", "overlay_polygon")]
-script = ExtResource("5_88d5u")
-tab = NodePath("../../UI/UpgradeMenuContainer/UpgradeMenu/MarginContainer/VBoxContainer/TabContainer/Civil")
-overlay_polygon = NodePath("CivilPoly")
-
-[node name="CivilPoly" type="Polygon2D" parent="MainScene/OverlayZone/CivilOverlay"]
-color = Color(1, 1, 0, 0.294118)
-polygon = PackedVector2Array(-698, 191, -569, 191, -572, 137, -543, 131, -537, 144, -505, 144, -499, 220, -465, 222, -465, 58, -388, 56, -381, 285, -460, 288, -463, 273, -496, 272, -496, 373, -539, 374, -539, 395, -694, 403)
-
-[node name="ZoneManager" type="Node2D" parent="MainScene"]
-script = ExtResource("6_ljg8q")
-
-[node name="InfoCom" type="Path2D" parent="MainScene/ZoneManager"]
-position = Vector2(-150, 30)
-curve = SubResource("Curve2D_81s5k")
-script = ExtResource("7_6atdx")
-CONFIDENCE_THRESHOLD = 100
-MAX_AUDITORS = 3
-
-[node name="IT" type="Path2D" parent="MainScene/ZoneManager"]
-position = Vector2(275, -80)
-curve = SubResource("Curve2D_ljg8q")
-script = ExtResource("7_6atdx")
-CONFIDENCE_THRESHOLD = 400
-MAX_AUDITORS = 5
-
-[node name="Civil" type="Path2D" parent="MainScene/ZoneManager"]
-position = Vector2(-420, 175)
-curve = SubResource("Curve2D_27y3g")
-script = ExtResource("7_6atdx")
-CONFIDENCE_THRESHOLD = 700
-MAX_AUDITORS = 7
-
-[node name="Pharma" type="Path2D" parent="MainScene/ZoneManager"]
-position = Vector2(465, -385)
-curve = SubResource("Curve2D_6atdx")
-script = ExtResource("7_6atdx")
-CONFIDENCE_THRESHOLD = 3000
-MAX_AUDITORS = 15
-
-[node name="Physics" type="Path2D" parent="MainScene/ZoneManager"]
-position = Vector2(-345, -100)
-curve = SubResource("Curve2D_88d5u")
-script = ExtResource("7_6atdx")
-CONFIDENCE_THRESHOLD = 1000
-MAX_AUDITORS = 8
-
-[node name="AuditTriggerArea" parent="MainScene" node_paths=PackedStringArray("collision_shape") instance=ExtResource("9_6atdx")]
-collision_shape = NodePath("CollisionShape2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainScene/AuditTriggerArea"]
-position = Vector2(-10, 34)
-shape = SubResource("CircleShape2D_27y3g")
-
-[node name="UI" type="Control" parent="MainScene"]
+[node name="UI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Panel" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UpgradeMenuContainer" type="MarginContainer" parent="MainScene/UI"]
+[node name="SkillsBar" parent="UI" instance=ExtResource("2_wkb84")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -210.0
+offset_right = -168.0
+grow_horizontal = 2
+scale = Vector2(10, 10)
+initial_value = 0.0
+
+[node name="UpgradeMenu" parent="UI" instance=ExtResource("4_xsymy")]
+layout_mode = 1
+offset_left = 801.0
+offset_top = 161.0
+offset_right = 295.0
+offset_bottom = 161.0
+scale = Vector2(0.5, 0.5)
+
+[node name="ClickBarChain" parent="UI" instance=ExtResource("4_koglj")]
 layout_mode = 0
-offset_left = 392.0
-offset_top = -94.0
-offset_right = 961.0
-offset_bottom = 534.0
-metadata/_edit_use_anchors_ = true
-
-[node name="UpgradeMenu" parent="MainScene/UI/UpgradeMenuContainer" node_paths=PackedStringArray("zone_manager", "it_overlay", "civil_overlay", "pharma_overlay", "physics_overlay") instance=ExtResource("9_88d5u")]
-layout_mode = 2
-zone_manager = NodePath("../../../ZoneManager")
-it_overlay = NodePath("../../../OverlayZone/ITOverlay")
-civil_overlay = NodePath("../../../OverlayZone/CivilOverlay")
-pharma_overlay = NodePath("../../../OverlayZone/PharmaOverlay")
-physics_overlay = NodePath("../../../OverlayZone/PhysicsOverlay")
-
-[editable path="MainScene/UI/UpgradeMenuContainer/UpgradeMenu"]
+offset_left = 150.0
+offset_top = 517.0
+offset_right = 985.0
+offset_bottom = 580.0
