@@ -12,4 +12,6 @@ signal finish_audit(audits: int)
 
 signal update_upgrade_points(points: int)
 
+signal update_auto_clicks(value: float)
+
 @warning_ignore_restore("unused_signal")

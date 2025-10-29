@@ -2,54 +2,34 @@ extends HBoxContainer
 class_name ClickBarChain
 
 
-var chain: Array[ClickBar] = []
-var cycles_list: Array[int] = []
+var chain: Array[ClickBarDisplay] = []
 var identifiers: Array[int] = []
-var debug_sources: Array[DebugComponent] = []
 
 
 func _ready() -> void:
 	create_chain()
-	create_cycles_list()
 	get_identifiers()
 	link_click_bars()
-	create_debug_panels()
 
 
 func create_chain() -> void:
-	for click_bar: ClickBar in get_children():
-		click_bar.disabled = true
-		chain.append(click_bar)
-	chain[0].disabled = false
-
-
-func create_cycles_list() -> void:
-	for i: int in range(0, chain.size()):
-		cycles_list.append(0)
+	for click_bar_display in get_children():
+		if click_bar_display is ClickBarDisplay:
+			click_bar_display.click_bar.disabled = true
+			chain.append(click_bar_display)
+	chain[0].click_bar.disabled = false
 
 
 func get_identifiers() -> void:
 	for i: int in range(0, chain.size()):
-		identifiers.append(chain[i].get_instance_id())
+		identifiers.append(chain[i].click_bar.get_instance_id())
 
 
 func link_click_bars() -> void:
 	var n: int = chain.size()
 	for i: int in range(0, n):
-		chain[i].cycle_completed.connect(_on_cycle_completed)
-
-
-func create_debug_panels() -> void:
-	var n: int = chain.size()
-	for i: int in range(1, n):
-		var cycles_debug := DebugComponent.new()
-		cycles_debug.get_debug_values_callable = func() -> Array[DebugValue]:
-			return [
-				DebugValue.new("Clicks required", func() -> int: return chain[i].required_clicks),
-				DebugValue.new("Cycles", func() -> int: return cycles_list[i])
-			]
-		cycles_debug.attach_debug_panel(chain[i], chain[i].size.y)
-		debug_sources.append(cycles_debug)
+		var click_bar: ClickBar = chain[i].click_bar
+		click_bar.cycle_completed.connect(_on_cycle_completed)
 
 
 func _on_cycle_completed(id: int, cycles: int) -> void:
@@ -58,7 +38,7 @@ func _on_cycle_completed(id: int, cycles: int) -> void:
 		push_error("Click Bar not found")
 		return
 	if click_bar_index > 0:
-		cycles = min(cycles, cycles_list[click_bar_index])
+		cycles = min(cycles, chain[click_bar_index].cycles)
 	if click_bar_index < chain.size() - 1:
 		add_cycle(click_bar_index + 1, cycles)
 	else:
@@ -67,18 +47,18 @@ func _on_cycle_completed(id: int, cycles: int) -> void:
 
 
 func add_cycle(next_index: int, cycles: int) -> void:
-	cycles_list[next_index] += cycles
-	if cycles_list[next_index] > 0:
-		chain[next_index].disabled = false
-	debug_sources[next_index-1].notify_debug_update()
+	var click_bar_display: ClickBarDisplay = chain[next_index]
+	click_bar_display.cycles += cycles
+	if click_bar_display.cycles > 0:
+		click_bar_display.click_bar.disabled = false
 
 
 func end_cycle(click_bar_index: int, cycles: int) -> void:
 	if click_bar_index == 0:
 		return
-	cycles_list[click_bar_index] -= cycles
-	if cycles_list[click_bar_index] <= 0:
-		var click_bar: ClickBar = chain[click_bar_index]
+	var click_bar_display: ClickBarDisplay = chain[click_bar_index]
+	click_bar_display.cycles -= cycles
+	if click_bar_display.cycles <= 0:
+		var click_bar: ClickBar = click_bar_display.click_bar
 		click_bar.call_deferred("reset", true)
 		click_bar.disabled = true
-	debug_sources[click_bar_index-1].notify_debug_update()

@@ -11,6 +11,7 @@ label = "Clicks"
 description = "Number of clicks  per click"
 base_cost = 10
 cost_multiplier = 1.4
+initial_effect = 1.0
 base_effect = 1.0
 effect_multiplier = 1.5
 metadata/_custom_type_script = "uid://b5l68tjgu4cfj"
@@ -22,6 +23,7 @@ label = "Auditors"
 description = ""
 base_cost = 10
 cost_multiplier = 1.4
+initial_effect = 0.0
 base_effect = 1.0
 effect_multiplier = 1.5
 metadata/_custom_type_script = "uid://b5l68tjgu4cfj"
@@ -108,3 +110,4 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [connection signal="upgraded" from="VBoxContainer/UpgradeContainer/Clicks" to="." method="_on_clicks_upgraded"]
+[connection signal="upgraded" from="VBoxContainer/UpgradeContainer/Auditors" to="." method="_on_auditors_upgraded"]

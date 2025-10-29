@@ -3,6 +3,7 @@ extends Node
 
 var _upgrade_points: int = 0
 var _clicks: float = 1.0
+var _auto_clicks: float = 0.0
 
 
 func get_upgrade_points() -> int:
@@ -18,3 +19,11 @@ func get_clicks() -> float:
 
 func set_clicks(value: float) -> void:
 	_clicks = value
+
+
+func get_auto_clicks() -> float:
+	return _auto_clicks
+
+func set_auto_clicks(value: float) -> void:
+	_auto_clicks = value
+	SignalBus.update_auto_clicks.emit(_auto_clicks)

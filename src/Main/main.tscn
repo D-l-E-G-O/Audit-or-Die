@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dxyc6e3uk3xvm" path="res://src/Main/main.gd" id="1_qkh5l"]
 [ext_resource type="PackedScene" uid="uid://bcxbtmwayncwk" path="res://src/UI/ProgressionBar/skills_bar.tscn" id="2_wkb84"]
-[ext_resource type="PackedScene" uid="uid://dfl6qpxnh8bbk" path="res://src/UI/ClickBar/ClickBarChain.tscn" id="4_koglj"]
+[ext_resource type="PackedScene" uid="uid://dfl6qpxnh8bbk" path="res://src/UI/ClickBar/click_bar_chain.tscn" id="4_koglj"]
 [ext_resource type="PackedScene" uid="uid://by7mcwuv62vv0" path="res://src/UI/UpgradeMenu/upgrade_menu.tscn" id="4_xsymy"]
 
 [node name="Main" type="Node2D"]
@@ -28,23 +28,25 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -210.0
-offset_right = -168.0
+offset_left = -512.0
+offset_top = 26.0
+offset_right = -470.0
+offset_bottom = 37.0
 grow_horizontal = 2
 scale = Vector2(10, 10)
 initial_value = 0.0
 
 [node name="UpgradeMenu" parent="UI" instance=ExtResource("4_xsymy")]
 layout_mode = 1
-offset_left = 766.0
-offset_top = 146.0
-offset_right = 330.0
-offset_bottom = 176.0
+offset_left = 717.0
+offset_top = 33.0
+offset_right = 281.0
+offset_bottom = 63.0
 scale = Vector2(0.5, 0.5)
 
 [node name="ClickBarChain" parent="UI" instance=ExtResource("4_koglj")]
 layout_mode = 0
-offset_left = 150.0
-offset_top = 517.0
-offset_right = 985.0
-offset_bottom = 580.0
+offset_left = 79.0
+offset_top = 435.0
+offset_right = 1074.0
+offset_bottom = 602.0

@@ -4,6 +4,7 @@ class_name UpgradeMenu
 
 @onready var upgrade_points: Label = $VBoxContainer/UpgradeContainer/UpgradePoints
 @onready var clicks: UpgradeButton = $VBoxContainer/UpgradeContainer/Clicks
+@onready var auditors: UpgradeButton = $VBoxContainer/UpgradeContainer/Auditors
 
 
 func _ready() -> void:
@@ -17,3 +18,7 @@ func update_label(points: int) -> void:
 
 func _on_clicks_upgraded() -> void:
 	Global.set_clicks(clicks.upgrade.get_effect())
+
+
+func _on_auditors_upgraded() -> void:
+	Global.set_auto_clicks(auditors.upgrade.get_effect())

@@ -27,8 +27,13 @@ func update_color() -> void:
 	progress_bar.add_theme_stylebox_override("fill", stylebox)
 
 
+func add_value(nb_clicks: float) -> void:
+	if nb_clicks > 0:
+		progress_bar.add_value(progress_bar.max_value * (nb_clicks / required_clicks) + 0.01)
+
+
 func _on_pressed() -> void:
-	progress_bar.add_value(progress_bar.max_value * (Global.get_clicks() / required_clicks) + 0.01)
+	add_value(Global.get_clicks())
 
 
 func _on_progress_bar_maximum_reached(cycles: int) -> void:

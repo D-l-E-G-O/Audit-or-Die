@@ -43,4 +43,4 @@ func _update_labels() -> void:
 		return
 	level_label.text = "Level: %d" % upgrade.level
 	cost_label.text = "Cost: %d" % upgrade.get_cost()
-	value_label.text = "Value: %0.2f" % snappedf(upgrade.get_effect(), 0.1)
+	value_label.text = "Value: %0.1f" % snappedf(upgrade.get_effect(), 0.1)

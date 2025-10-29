@@ -7,6 +7,7 @@ class_name Upgrade
 @export var description: String
 @export var base_cost: int = 10
 @export var cost_multiplier: float = 1.4
+@export var initial_effect: float = 1.0
 @export var base_effect: float = 1.0
 @export var effect_multiplier: float = 1.5
 
@@ -16,7 +17,10 @@ func get_cost() -> int:
 
 
 func get_effect() -> float:
-	return base_effect * pow(effect_multiplier, level)
+	var effect: float = initial_effect
+	if level > 0:
+		effect = base_effect * pow(effect_multiplier, level)
+	return snappedf(effect, 0.1)
 
 
 func can_upgrade(points: int) -> bool:

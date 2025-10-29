@@ -7,11 +7,12 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lk1iy"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2xlw5"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w4nn3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkfu1"]
 
 [node name="ClickBar" type="Button"]
+theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxEmpty_pkfu1")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lk1iy")
@@ -27,7 +28,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/background = SubResource("StyleBoxEmpty_2xlw5")
+theme_override_styles/background = SubResource("StyleBoxEmpty_w4nn3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_pkfu1")
 value = 50.0
 show_percentage = false

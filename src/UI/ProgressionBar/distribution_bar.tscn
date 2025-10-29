@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckhoyokjub8ut"]
+
+[ext_resource type="Script" uid="uid://dd0qrfsygiw6h" path="res://src/UI/ProgressionBar/distribution_bar.gd" id="1_i602j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50t8o"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdffx"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="DistributionBar" type="ProgressBar"]
+offset_right = 175.0
+offset_bottom = 23.0
+theme_override_constants/outline_size = 7
+theme_override_styles/background = SubResource("StyleBoxFlat_50t8o")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rdffx")
+step = 1.0
+value = 50.0
+script = ExtResource("1_i602j")
