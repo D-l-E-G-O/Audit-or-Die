@@ -19,6 +19,8 @@ func _process(_delta: float) -> void:
 
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
 	set_process(false)
 	if upgrade:
 		button.text = upgrade.label

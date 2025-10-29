@@ -1,7 +1,7 @@
 extends Node
 
 
-var _upgrade_points: int = 100
+var _upgrade_points: int = 0
 var _clicks: float = 1.0
 
 
@@ -10,6 +10,7 @@ func get_upgrade_points() -> int:
 
 func set_upgrade_points(value: int) -> void:
 	_upgrade_points = value
+	SignalBus.update_upgrade_points.emit(_upgrade_points)
 
 
 func get_clicks() -> float:

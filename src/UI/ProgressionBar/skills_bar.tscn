@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcxbtmwayncwk"]
+[gd_scene load_steps=7 format=3 uid="uid://bcxbtmwayncwk"]
 
 [ext_resource type="Texture2D" uid="uid://cetggvombrkr4" path="res://assets/ProgressBar/progressbar_over.png" id="1_gmq15"]
 [ext_resource type="Texture2D" uid="uid://jqg5s4dtwjq0" path="res://assets/ProgressBar/progressbar_yellow.png" id="2_hxshy"]
 [ext_resource type="Script" uid="uid://b7e06ro4t0ly2" path="res://src/UI/ProgressionBar/skills_bar.gd" id="3_ij2oq"]
 [ext_resource type="Texture2D" uid="uid://bglbk6203pab5" path="res://assets/ProgressBar/progressbar_under.png" id="4_wyyql"]
 [ext_resource type="Texture2D" uid="uid://d2tkyilig0u21" path="res://assets/ProgressBar/progressbar_white.png" id="5_8pjbd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gw17v"]
 
 [node name="SkillsBar" type="TextureProgressBar" node_paths=PackedStringArray("decrease_bar")]
 offset_left = -21.0
@@ -46,5 +48,11 @@ grow_horizontal = 2
 scale = Vector2(0.1, 0.1)
 theme_override_font_sizes/font_size = 40
 text = "Skills Level : 0"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 14.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gw17v")
 
 [connection signal="maximum_reached" from="." to="." method="_on_maximum_reached"]

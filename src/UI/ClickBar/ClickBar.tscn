@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpuce5l5l1hkb"]
+[gd_scene load_steps=7 format=3 uid="uid://bpuce5l5l1hkb"]
 
 [ext_resource type="Script" uid="uid://bi6brq7gibnpk" path="res://src/UI/ClickBar/click_bar.gd" id="1_144cp"]
 [ext_resource type="Script" uid="uid://bfo0etc1kk7ou" path="res://src/UI/ProgressionBar/progression_bar.gd" id="2_pkfu1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pkfu1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lk1iy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2xlw5"]
 
@@ -9,6 +13,8 @@
 
 [node name="ClickBar" type="Button"]
 theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pkfu1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lk1iy")
 text = "Click"
 script = ExtResource("1_144cp")
 
