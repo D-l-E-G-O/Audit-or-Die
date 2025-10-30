@@ -1,6 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0rlm6bsdqlkf"]
+[gd_scene load_steps=6 format=3 uid="uid://c0rlm6bsdqlkf"]
 
 [ext_resource type="Script" uid="uid://dde4hal3g2kua" path="res://src/UI/UpgradeMenu/upgrade_button.gd" id="1_rf4r5"]
+[ext_resource type="PackedScene" uid="uid://cidffowwto0oy" path="res://src/ValueLabel/value_label.tscn" id="2_804q4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_804q4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uylaa"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_804q4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(1, 1, 0, 0.27451)
+shadow_size = 4
 
 [node name="UpgradeButton" type="VBoxContainer"]
 clip_contents = true
@@ -16,29 +45,35 @@ script = ExtResource("1_rf4r5")
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_804q4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uylaa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_804q4")
 text = "Upgrade"
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+size_flags_stretch_ratio = 0.0
 theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 20
 columns = 2
 
-[node name="Level" type="Label" parent="GridContainer"]
+[node name="Level" parent="GridContainer" instance=ExtResource("2_804q4")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Level: 0"
+alignment = 1
+text = "Level: "
+font_size = 28
 
-[node name="Cost" type="Label" parent="GridContainer"]
+[node name="Cost" parent="GridContainer" instance=ExtResource("2_804q4")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Cost: 0"
+alignment = 1
+text = "Cost: "
+font_size = 28
 
-[node name="Value" type="Label" parent="GridContainer"]
+[node name="Value" parent="GridContainer" instance=ExtResource("2_804q4")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Value: 0"
+alignment = 1
+font_size = 28
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

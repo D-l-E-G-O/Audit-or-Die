@@ -48,7 +48,7 @@ func update_value() -> void:
 		if int(value) == value:
 			value_label.text = str(int(value))
 		else:
-			value_label.text = str(snappedf(value, 0.1))
+			value_label.text = str(snappedf(value, 0.01))
 
 
 func update_text() -> void:

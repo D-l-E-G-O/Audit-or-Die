@@ -6,7 +6,6 @@
 offset_right = 66.0
 offset_bottom = 23.0
 script = ExtResource("1_m6b44")
-value = 0
 
 [node name="Text" type="Label" parent="."]
 layout_mode = 2

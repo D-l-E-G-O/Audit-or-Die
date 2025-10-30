@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bks7a7xqi77bd"]
-
-[ext_resource type="Script" uid="uid://jb81m7txt8ya" path="res://src/Debug/debug_panel.gd" id="1_fcv26"]
-
-[node name="DebugPanel" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_fcv26")

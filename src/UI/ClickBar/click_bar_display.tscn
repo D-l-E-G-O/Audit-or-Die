@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://ckhoyokjub8ut" path="res://src/UI/ProgressionBar/distribution_bar.tscn" id="3_iyp3o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iyp3o"]
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="ClickBarDisplay" type="VBoxContainer"]
 offset_right = 40.0
@@ -25,9 +25,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
-value = 0.0
 text = "CPS: "
-font_size = 26
 
 [node name="DistributionBar" parent="CPSContainer" instance=ExtResource("3_iyp3o")]
 layout_mode = 2
@@ -50,5 +48,4 @@ text = "Required Clicks: "
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
-value = 0.0
 text = "Cycles: "

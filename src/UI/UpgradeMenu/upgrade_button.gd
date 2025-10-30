@@ -7,9 +7,9 @@ signal upgraded
 
 @export var upgrade: Upgrade
 @onready var button: Button = $Button
-@onready var level_label: Label = $GridContainer/Level
-@onready var cost_label: Label = $GridContainer/Cost
-@onready var value_label: Label = $GridContainer/Value
+@onready var level: ValueLabel = $GridContainer/Level
+@onready var cost: ValueLabel = $GridContainer/Cost
+@onready var value: ValueLabel = $GridContainer/Value
 
 
 func _process(_delta: float) -> void:
@@ -41,6 +41,6 @@ func _on_button_pressed() -> void:
 func _update_labels() -> void:
 	if Engine.is_editor_hint():
 		return
-	level_label.text = "Level: %d" % upgrade.level
-	cost_label.text = "Cost: %d" % upgrade.get_cost()
-	value_label.text = "Value: %0.1f" % snappedf(upgrade.get_effect(), 0.1)
+	level.value = upgrade.level
+	cost.value = upgrade.get_cost()
+	value.value = snappedf(upgrade.get_effect(), 0.1)

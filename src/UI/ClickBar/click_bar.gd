@@ -17,14 +17,18 @@ func _process(_delta: float) -> void:
 
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
 	set_process(false)
 	update_color()
 
 
 func update_color() -> void:
-	var stylebox = StyleBoxFlat.new()
-	stylebox.bg_color = color
-	progress_bar.add_theme_stylebox_override("fill", stylebox)
+	if progress_bar:
+		var style_box = StyleBoxFlat.new()
+		style_box.set_corner_radius_all(5)
+		style_box.bg_color = color
+		progress_bar.add_theme_stylebox_override("fill", style_box)
 
 
 func add_value(nb_clicks: float) -> void:

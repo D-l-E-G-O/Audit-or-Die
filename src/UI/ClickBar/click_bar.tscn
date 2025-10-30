@@ -1,21 +1,83 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpuce5l5l1hkb"]
+[gd_scene load_steps=10 format=3 uid="uid://bpuce5l5l1hkb"]
 
 [ext_resource type="Script" uid="uid://bi6brq7gibnpk" path="res://src/UI/ClickBar/click_bar.gd" id="1_144cp"]
 [ext_resource type="Script" uid="uid://bfo0etc1kk7ou" path="res://src/UI/ProgressionBar/progression_bar.gd" id="2_pkfu1"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pkfu1"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_22t7h"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lk1iy"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oeikl"]
+bg_color = Color(0, 0, 0, 0.705882)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 0.705882)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w4nn3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w4nn3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkfu1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7nd1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(1, 1, 0, 0.27451)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22t7h"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsnn4"]
+bg_color = Color(0.180005, 0.180005, 0.180005, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y20w4"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="ClickBar" type="Button"]
+offset_right = 98.0
+offset_bottom = 63.0
 theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 40
-theme_override_styles/hover = SubResource("StyleBoxEmpty_pkfu1")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_lk1iy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_22t7h")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_oeikl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w4nn3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_e7nd1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_22t7h")
 text = "Click"
 script = ExtResource("1_144cp")
 
@@ -28,8 +90,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/background = SubResource("StyleBoxEmpty_w4nn3")
-theme_override_styles/fill = SubResource("StyleBoxFlat_pkfu1")
+theme_override_styles/background = SubResource("StyleBoxFlat_bsnn4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_y20w4")
 value = 50.0
 show_percentage = false
 script = ExtResource("2_pkfu1")
