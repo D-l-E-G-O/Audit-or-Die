@@ -7,8 +7,10 @@ class_name ClickBarDisplay
 @export var required_clicks: int = 3
 @export var label: String = "Click"
 @export var hide_cycles: bool = false
-@export var hide_required_clicks: bool = false
+@export var hide_cps: bool = true
+@export var show_required_clicks: bool = false
 
+@onready var cps_container: VBoxContainer = $CPSContainer
 @onready var click_bar: ClickBar = $ClickBar
 @onready var cps_label: ValueLabel = $CPSContainer/CPS
 @onready var distribution_bar: ProgressBar = $CPSContainer/DistributionBar
@@ -37,6 +39,7 @@ func _ready() -> void:
 		return
 	set_process(false)
 	SignalBus.set_required_clicks_visibility.connect(_on_set_required_clicks_visibility)
+	SignalBus.set_cps_info_visibility.connect(_on_set_cps_info_visibility)
 	update_display()
 
 
@@ -45,6 +48,7 @@ func update_display() -> void:
 	update_distribution_bar()
 	update_required_clicks_label()
 	update_cycles_label()
+	update_cps_infos()
 
 
 func update_click_bar() -> void:
@@ -67,7 +71,7 @@ func update_distribution_bar() -> void:
 func update_required_clicks_label() -> void:
 	if required_clicks_label:
 		required_clicks_label.value = required_clicks
-		required_clicks_label.visible = !hide_required_clicks
+		required_clicks_label.visible = show_required_clicks
 
 
 func update_cycles_label() -> void:
@@ -75,6 +79,16 @@ func update_cycles_label() -> void:
 		cycles_label.visible = !hide_cycles
 
 
-func _on_set_required_clicks_visibility(hide_label: bool) -> void:
-	hide_required_clicks = hide_label
-	required_clicks_label.visible = !hide_label
+func update_cps_infos() -> void:
+	if cps_container:
+		cps_container.visible = !hide_cps
+
+
+func _on_set_required_clicks_visibility(show_label: bool) -> void:
+	show_required_clicks = show_label
+	required_clicks_label.visible = show_label
+
+
+func _on_set_cps_info_visibility(show_cps: bool) -> void:
+	hide_cps = !show_cps
+	cps_container.visible = show_cps

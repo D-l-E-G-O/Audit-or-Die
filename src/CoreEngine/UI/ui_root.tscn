@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmbo6k7l43nev"]
+
+[ext_resource type="Script" uid="uid://b3t1ceshrq4ax" path="res://src/CoreEngine/UI/ui_root.gd" id="1_r2yeb"]
+[ext_resource type="PackedScene" uid="uid://ripajanrupfk" path="res://src/MainMenu/main_menu.tscn" id="2_0gxqm"]
+
+[node name="UiRoot" type="Node"]
+script = ExtResource("1_r2yeb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("2_0gxqm")]

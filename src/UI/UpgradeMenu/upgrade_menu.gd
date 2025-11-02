@@ -22,3 +22,5 @@ func _on_clicks_upgraded() -> void:
 
 func _on_auditors_upgraded() -> void:
 	Global.set_auto_clicks(auditors.upgrade.get_effect())
+	if auditors.upgrade.level == 1:
+		SignalBus.set_cps_info_visibility.emit(true)

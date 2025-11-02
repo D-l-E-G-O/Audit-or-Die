@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsbkv7vfu553g"]
+
+[ext_resource type="PackedScene" uid="uid://ktxlgcw1c75" path="res://src/MainScene/main_scene.tscn" id="1_ctoan"]
+
+[node name="SceneRoot" type="Node"]
+
+[node name="MainScene" parent="." instance=ExtResource("1_ctoan")]
+visible = false

@@ -7,6 +7,7 @@ var identifiers: Array[int] = []
 
 
 func _ready() -> void:
+	SignalBus.synchronize_click_bars.connect(_on_synchronize_click_bars)
 	create_chain()
 	get_identifiers()
 	link_click_bars()
@@ -21,14 +22,13 @@ func create_chain() -> void:
 
 
 func get_identifiers() -> void:
-	for i: int in range(0, chain.size()):
-		identifiers.append(chain[i].click_bar.get_instance_id())
+	for display: ClickBarDisplay in chain:
+		identifiers.append(display.click_bar.get_instance_id())
 
 
 func link_click_bars() -> void:
-	var n: int = chain.size()
-	for i: int in range(0, n):
-		var click_bar: ClickBar = chain[i].click_bar
+	for display: ClickBarDisplay in chain:
+		var click_bar: ClickBar = display.click_bar
 		click_bar.cycle_completed.connect(_on_cycle_completed)
 
 
@@ -62,3 +62,17 @@ func end_cycle(click_bar_index: int, cycles: int) -> void:
 		var click_bar: ClickBar = click_bar_display.click_bar
 		click_bar.call_deferred("reset", true)
 		click_bar.disabled = true
+
+
+func _on_synchronize_click_bars() -> void:
+	var min_value: float = get_smallest_click_bar_value()
+	for display: ClickBarDisplay in chain:
+		display.click_bar.set_value(min_value)
+
+
+func get_smallest_click_bar_value() -> float:
+	var min_value: float = chain[0].click_bar.get_value()
+	for i: int in range(1, chain.size()):
+		var click_bar: ClickBar = chain[i].click_bar
+		min_value = min(min_value, click_bar.get_value())
+	return min_value

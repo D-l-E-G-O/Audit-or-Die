@@ -2,30 +2,18 @@
 
 [ext_resource type="Script" uid="uid://bkn0thblhuhml" path="res://src/UI/UpgradeMenu/upgrade_menu.gd" id="1_0damn"]
 [ext_resource type="PackedScene" uid="uid://c0rlm6bsdqlkf" path="res://src/UI/UpgradeMenu/upgrade_button.tscn" id="2_nynxp"]
-[ext_resource type="Script" uid="uid://b5l68tjgu4cfj" path="res://src/Upgrade/upgrade.gd" id="3_7akbo"]
+[ext_resource type="Script" uid="uid://b5l68tjgu4cfj" path="res://src/UI/UpgradeMenu/Upgrade/upgrade.gd" id="3_7akbo"]
 
 [sub_resource type="Resource" id="Resource_qy5x6"]
 script = ExtResource("3_7akbo")
-level = 0
 label = "Clicks"
 description = "Number of clicks  per click"
-base_cost = 10
-cost_multiplier = 1.4
-initial_effect = 1.0
-base_effect = 1.0
-effect_multiplier = 1.5
 metadata/_custom_type_script = "uid://b5l68tjgu4cfj"
 
 [sub_resource type="Resource" id="Resource_7akbo"]
 script = ExtResource("3_7akbo")
-level = 0
 label = "Auditors"
-description = ""
-base_cost = 10
-cost_multiplier = 1.4
 initial_effect = 0.0
-base_effect = 1.0
-effect_multiplier = 1.5
 metadata/_custom_type_script = "uid://b5l68tjgu4cfj"
 
 [node name="UpgradeMenu" type="Control"]

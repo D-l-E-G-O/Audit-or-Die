@@ -36,6 +36,14 @@ func add_value(nb_clicks: float) -> void:
 		progress_bar.add_value(progress_bar.max_value * (nb_clicks / required_clicks) + 0.01)
 
 
+func set_value(value: float) -> void:
+	progress_bar.value = value
+
+
+func get_value() -> float:
+	return progress_bar.value
+
+
 func _on_pressed() -> void:
 	add_value(Global.get_clicks())
 

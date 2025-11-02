@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cidffowwto0oy"]
 
-[ext_resource type="Script" uid="uid://b6om06dvlqam" path="res://src/ValueLabel/value_label.gd" id="1_m6b44"]
+[ext_resource type="Script" uid="uid://b6om06dvlqam" path="res://src/UI/ValueLabel/value_label.gd" id="1_m6b44"]
 
 [node name="ValueLabel" type="HBoxContainer"]
 offset_right = 66.0
