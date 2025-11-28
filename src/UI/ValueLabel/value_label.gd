@@ -75,3 +75,5 @@ func update_font_size() -> void:
 
 func set_visibility(new_visibility: bool) -> void:
 	visibility = new_visibility
+	update_value()
+	update_text()
