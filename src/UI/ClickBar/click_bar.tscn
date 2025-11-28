@@ -3,27 +3,13 @@
 [ext_resource type="Script" uid="uid://bi6brq7gibnpk" path="res://src/UI/ClickBar/click_bar.gd" id="1_144cp"]
 [ext_resource type="Script" uid="uid://bfo0etc1kk7ou" path="res://src/UI/ProgressionBar/progression_bar.gd" id="2_pkfu1"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_22t7h"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oeikl"]
-bg_color = Color(0, 0, 0, 0.705882)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22t7h"]
+bg_color = Color(0, 0, 0, 0)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0, 0, 0, 0.705882)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w4nn3"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0, 0, 0)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -43,17 +29,31 @@ corner_radius_bottom_left = 5
 shadow_color = Color(1, 1, 0, 0.27451)
 shadow_size = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22t7h"]
-bg_color = Color(0, 0, 0, 0)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 0)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w4nn3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oeikl"]
+bg_color = Color(0, 0, 0, 0.705882)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 0.705882)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_22t7h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsnn4"]
 bg_color = Color(0.180005, 0.180005, 0.180005, 1)
@@ -72,13 +72,13 @@ corner_radius_bottom_left = 5
 offset_right = 98.0
 offset_bottom = 63.0
 theme_override_constants/outline_size = 7
-theme_override_font_sizes/font_size = 40
-theme_override_styles/focus = SubResource("StyleBoxEmpty_22t7h")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_oeikl")
-theme_override_styles/hover = SubResource("StyleBoxFlat_w4nn3")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_e7nd1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_22t7h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_e7nd1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w4nn3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_oeikl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_22t7h")
 text = "Click"
+autowrap_mode = 3
 script = ExtResource("1_144cp")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]

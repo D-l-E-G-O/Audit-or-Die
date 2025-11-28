@@ -11,6 +11,8 @@ anchor_bottom = 1.0
 offset_bottom = -519.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 30
 alignment = 1
 script = ExtResource("1_fam25")
@@ -19,35 +21,34 @@ script = ExtResource("1_fam25")
 layout_mode = 2
 alignment = 0
 color = Color(0, 0, 1, 1)
-label = "Step 1"
+label = "Planification"
 hide_cycles = true
 
 [node name="Step 2" parent="." instance=ExtResource("4_7yohf")]
 layout_mode = 2
 alignment = 0
 color = Color(0, 1, 0, 1)
-required_clicks = 6
-label = "Step 2"
+label = "Travail sur le terrain"
 
 [node name="Step 3" parent="." instance=ExtResource("4_7yohf")]
 layout_mode = 2
 alignment = 0
 color = Color(1, 0, 0, 1)
 required_clicks = 12
-label = "Step 3"
+label = "Evaluations et contrôles"
 
 [node name="Step 4" parent="." instance=ExtResource("4_7yohf")]
 layout_mode = 2
 alignment = 0
 color = Color(1, 1, 0, 1)
 required_clicks = 6
-label = "Step 4"
+label = "Revue qualité"
 
 [node name="Step 5" parent="." instance=ExtResource("4_7yohf")]
 layout_mode = 2
 alignment = 0
 color = Color(0, 1, 1, 1)
-label = "Step 5"
+label = "Rapport d'audit"
 
 [node name="AutoClickManager" type="Node" parent="." node_paths=PackedStringArray("click_bar_chain")]
 script = ExtResource("3_ifgwp")

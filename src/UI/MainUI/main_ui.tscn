@@ -88,7 +88,7 @@ theme_override_constants/margin_bottom = 50
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.6
+size_flags_stretch_ratio = 0.4
 alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/CenterContainer/HBoxContainer"]
@@ -99,7 +99,6 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_bwggr")
 
 [node name="ClickBarChain" parent="VBoxContainer/CenterContainer/HBoxContainer" instance=ExtResource("3_bwggr")]
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer/CenterContainer/HBoxContainer"]
 layout_mode = 2
