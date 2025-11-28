@@ -1,13 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://ripajanrupfk"]
+[gd_scene load_steps=4 format=3 uid="uid://ripajanrupfk"]
 
-[ext_resource type="Script" uid="uid://kjii52a7kl1c" path="res://src/MainMenu/main_menu.gd" id="1_r1g53"]
+[ext_resource type="Script" uid="uid://kjii52a7kl1c" path="res://src/UI/MainMenu/main_menu.gd" id="1_r1g53"]
+[ext_resource type="Texture2D" uid="uid://djo6lnjibj8jm" path="res://assets/Logo_v1.png" id="2_avqdh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avqdh"]
+bg_color = Color(0.9607843, 0.9098039, 0.80784315, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_r1g53")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_avqdh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_avqdh")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

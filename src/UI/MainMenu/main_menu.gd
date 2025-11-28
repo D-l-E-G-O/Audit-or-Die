@@ -2,13 +2,16 @@ extends Control
 class_name MainMenu
 
 
+signal show_main_ui
+
+
 func _ready() -> void:
 	SignalBus.show_main_menu.connect(show)
 
 
 func _on_play_pressed() -> void:
 	visible = false
-	Game.current_scene.show()
+	show_main_ui.emit()
 
 
 func _on_settings_pressed() -> void:

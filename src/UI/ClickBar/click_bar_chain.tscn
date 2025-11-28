@@ -5,8 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://c53ury7a1l5hy" path="res://src/UI/ClickBar/click_bar_display.tscn" id="4_7yohf"]
 
 [node name="ClickBarChain" type="HBoxContainer"]
-offset_right = 651.0
-offset_bottom = 63.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -519.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 30
 alignment = 1
 script = ExtResource("1_fam25")

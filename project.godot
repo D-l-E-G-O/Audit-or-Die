@@ -22,6 +22,12 @@ SignalBus="*res://src/CoreEngine/Core/SignalBus.gd"
 Global="*res://src/CoreEngine/Core/Global.gd"
 Game="*res://src/CoreEngine/Core/Game.gd"
 
+[display]
+
+window/size/mode=3
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [dotnet]
 
 project/assembly_name="Audit-or-Die"

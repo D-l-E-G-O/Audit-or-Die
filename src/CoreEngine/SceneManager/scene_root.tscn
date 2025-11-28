@@ -5,4 +5,3 @@
 [node name="SceneRoot" type="Node"]
 
 [node name="MainScene" parent="." instance=ExtResource("1_ctoan")]
-visible = false
