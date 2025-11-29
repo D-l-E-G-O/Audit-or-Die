@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmbo6k7l43nev"]
+
+[ext_resource type="Script" uid="uid://b3t1ceshrq4ax" path="res://src/CoreEngine/UI/ui_root.gd" id="1_r2yeb"]
+[ext_resource type="PackedScene" uid="uid://ripajanrupfk" path="res://src/UI/MainMenu/main_menu.tscn" id="2_0gxqm"]
+[ext_resource type="PackedScene" uid="uid://t4y2dg4wo0a1" path="res://src/UI/MainUI/main_ui.tscn" id="3_hlx0d"]
+
+[node name="UiRoot" type="Node"]
+script = ExtResource("1_r2yeb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainUI" parent="CanvasLayer" instance=ExtResource("3_hlx0d")]
+visible = false
+
+[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("2_0gxqm")]
+
+[connection signal="show_main_ui" from="CanvasLayer/MainMenu" to="." method="_on_main_menu_show_main_ui"]

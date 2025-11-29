@@ -2,7 +2,7 @@ extends ProgressionBar
 class_name SkillsBar
 
 
-@onready var label: Label = $Label
+@export var label: Label
 
 var level: int = 0
 
@@ -18,7 +18,8 @@ func _on_maximum_reached(cycles: int) -> void:
 	level += cycles
 	set_max_value(pow(2, level))
 	reset_with_tween()
-	label.text = "Skills level: %d" % level
+	if label:
+		label.text = "Skills level: %d" % level
 	var upgrade_points: int = Global.get_upgrade_points()
 	for i: int in range(cycles):
 		upgrade_points += 10 * (level - i)

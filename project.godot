@@ -11,21 +11,34 @@ config_version=5
 [application]
 
 config/name="Audit-or-Die"
-run/main_scene="uid://ktxlgcw1c75"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+run/main_scene="uid://drknkt48dsc4p"
+config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/image="uid://djo6lnjibj8jm"
 config/icon="uid://djo6lnjibj8jm"
 
 [autoload]
 
-SignalBus="*res://src/Autoload/SignalBus.gd"
-Global="*res://src/Autoload/Global.gd"
+SignalBus="*res://src/CoreEngine/Core/SignalBus.gd"
+Global="*res://src/CoreEngine/Core/Global.gd"
+Game="*res://src/CoreEngine/Core/Game.gd"
+
+[display]
+
+window/size/mode=3
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[dotnet]
+
+project/assembly_name="Audit-or-Die"
 
 [file_customization]
 
 folder_colors={
-"res://assets/": "red",
-"res://src/": "green"
+"res://assets/": "orange",
+"res://src/": "purple",
+"res://src/CoreEngine/": "red",
+"res://src/UI/": "green"
 }
 
 [input]

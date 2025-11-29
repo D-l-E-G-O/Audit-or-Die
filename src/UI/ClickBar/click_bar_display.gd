@@ -7,24 +7,26 @@ class_name ClickBarDisplay
 @export var required_clicks: int = 3
 @export var label: String = "Click"
 @export var hide_cycles: bool = false
-@export var hide_required_clicks: bool = false
+@export var hide_cps: bool = true
 
-@onready var click_bar: ClickBar = $ClickBar
-@onready var cps_label: ValueLabel = $CPSContainer/CPS
-@onready var distribution_bar: ProgressBar = $CPSContainer/DistributionBar
-@onready var required_clicks_label: ValueLabel = $CyclesContainer/RequiredClicks
-@onready var cycles_label: ValueLabel = $CyclesContainer/Cycles
+@export var cps_container: VBoxContainer
+@export var click_bar: ClickBar
+@export var cps_label: ValueLabel
+@export var distribution_bar: ProgressBar
+@export var cycles_label: ValueLabel
 
 
 var cycles: int = 0:
 	set(val):
 		cycles = val
-		cycles_label.value = cycles
+		if cycles_label:
+			cycles_label.value = cycles
 
 var cps: float = 0.0:
 	set(val):
 		cps = val
-		cps_label.value = cps
+		if cps_label:
+			cps_label.value = cps
 
 
 func _process(_delta: float) -> void:
@@ -36,15 +38,17 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	set_process(false)
-	SignalBus.set_required_clicks_visibility.connect(_on_set_required_clicks_visibility)
+	if !(cps_container && click_bar && cps_label && distribution_bar && cycles_label):
+		push_error("%s : some @export variables are null" % name)
+	SignalBus.set_cps_info_visibility.connect(_on_set_cps_info_visibility)
 	update_display()
 
 
 func update_display() -> void:
 	update_click_bar()
 	update_distribution_bar()
-	update_required_clicks_label()
 	update_cycles_label()
+	update_cps_visibility()
 
 
 func update_click_bar() -> void:
@@ -64,17 +68,17 @@ func update_distribution_bar() -> void:
 		distribution_bar.add_theme_constant_override("outline_size", 7)
 
 
-func update_required_clicks_label() -> void:
-	if required_clicks_label:
-		required_clicks_label.value = required_clicks
-		required_clicks_label.visible = !hide_required_clicks
-
-
 func update_cycles_label() -> void:
 	if cycles_label:
-		cycles_label.visible = !hide_cycles
+		cycles_label.set_visibility(!hide_cycles)
 
 
-func _on_set_required_clicks_visibility(hide_label: bool) -> void:
-	hide_required_clicks = hide_label
-	required_clicks_label.visible = !hide_label
+func update_cps_visibility() -> void:
+	if cps_container:
+		cps_container.visible = !hide_cps
+
+
+func _on_set_cps_info_visibility(show_cps: bool) -> void:
+	hide_cps = !show_cps
+	if cps_container:
+		cps_container.visible = show_cps

@@ -21,6 +21,8 @@ class_name ValueLabel
 @onready var text_label: Label = $Text
 @onready var value_label: Label = $Value
 
+var visibility: bool = true
+
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
@@ -44,16 +46,24 @@ func _ready() -> void:
 
 
 func update_value() -> void:
-	if value_label:
-		if int(value) == value:
-			value_label.text = str(int(value))
-		else:
-			value_label.text = str(snappedf(value, 0.01))
+	if !value_label:
+		return
+	if !visibility:
+		value_label.text = ""
+		return
+	if int(value) == value:
+		value_label.text = str(int(value))
+	else:
+		value_label.text = str(snappedf(value, 0.01))
 
 
 func update_text() -> void:
-	if text_label:
-		text_label.text = text
+	if !text_label:
+		return
+	if !visibility:
+		text_label.text = ""
+		return
+	text_label.text = text
 
 
 func update_font_size() -> void:
@@ -61,3 +71,9 @@ func update_font_size() -> void:
 		value_label.add_theme_font_size_override("font_size", font_size)
 	if text_label:
 		text_label.add_theme_font_size_override("font_size", font_size)
+
+
+func set_visibility(new_visibility: bool) -> void:
+	visibility = new_visibility
+	update_value()
+	update_text()

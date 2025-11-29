@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b8kivkhxk8iry" path="res://src/UI/ClickBar/click_bar_display.gd" id="1_b50l3"]
 [ext_resource type="PackedScene" uid="uid://bpuce5l5l1hkb" path="res://src/UI/ClickBar/click_bar.tscn" id="2_50t8o"]
-[ext_resource type="PackedScene" uid="uid://cidffowwto0oy" path="res://src/ValueLabel/value_label.tscn" id="3_50t8o"]
+[ext_resource type="PackedScene" uid="uid://cidffowwto0oy" path="res://src/UI/ValueLabel/value_label.tscn" id="3_50t8o"]
 [ext_resource type="PackedScene" uid="uid://ckhoyokjub8ut" path="res://src/UI/ProgressionBar/distribution_bar.tscn" id="3_iyp3o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iyp3o"]
@@ -11,14 +11,28 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="ClickBarDisplay" type="VBoxContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ClickBarDisplay" type="VBoxContainer" node_paths=PackedStringArray("cps_container", "click_bar", "cps_label", "distribution_bar", "cycles_label")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1054.0
+offset_bottom = -553.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 1
 script = ExtResource("1_b50l3")
+cps_container = NodePath("CPSContainer")
+click_bar = NodePath("ClickBar")
+cps_label = NodePath("CPSContainer/CPS")
+distribution_bar = NodePath("CPSContainer/DistributionBar")
+cycles_label = NodePath("Cycles")
 
 [node name="CPSContainer" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 2
+size_flags_vertical = 3
 alignment = 1
 
 [node name="CPS" parent="CPSContainer" instance=ExtResource("3_50t8o")]
@@ -29,22 +43,14 @@ text = "CPS: "
 
 [node name="DistributionBar" parent="CPSContainer" instance=ExtResource("3_iyp3o")]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_styles/fill = SubResource("StyleBoxFlat_iyp3o")
 
 [node name="ClickBar" parent="." instance=ExtResource("2_50t8o")]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="CyclesContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="RequiredClicks" parent="CyclesContainer" instance=ExtResource("3_50t8o")]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-value = 3.0
-text = "Required Clicks: "
-
-[node name="Cycles" parent="CyclesContainer" instance=ExtResource("3_50t8o")]
+[node name="Cycles" parent="." instance=ExtResource("3_50t8o")]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
