@@ -1,4 +1,4 @@
-# Audit or Die
+# Audit or Die ![Static Badge](https://img.shields.io/badge/Statut-En%20Cours-green)
 
 ![Logo](assets/Logo_v1.png "Audit or Die")
 
