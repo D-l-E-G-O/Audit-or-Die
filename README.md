@@ -15,11 +15,6 @@ Endgame UI
 Main Menu
 ![Main Menu](assets/captures/main_menu.png "Main Menu")
 
-## Technologies utilisées
-
-- **Langage :** GDScript    
-- **IDE :** Godot Engine v4.5
-
 ## Procédures d'installation et d'exécution
 
 ### 1 - Téléchargement
@@ -68,32 +63,3 @@ Décompressez l’archive téléchargée dans le dossier de votre choix.
 	```bash
 	Audit-Or-Die.app
 	```
-
-## Objectif pédagogique
-
-Faire comprendre que l'audit permet de faire grandir l'entreprise en mettant en lumière certains problèmes ou non-conformités. L’auditeur protège la fiabilité et la confiance grâce à la vérification rigoureuse et à la détection des risques, des erreurs, des fraudes et des incohérences.
-
-## Références
-
-- https://www.unistra.fr/service-audit-interne
-
-## Description des fonctionnalités
-
-- Le joueur clique sur les boutons représentant les étapes de l'audit au centre de l'écran.
-- En créant des audit, le joueur augmente la barre de compétence.
-- A chaque fois que la barre de compétence est remplie, le joueur gagne un niveau.
-- A chaque fois que le joueur monte en niveau, il obtient des points d'amélioration.
-- Avec ces points d'amélioration, le joueur peut acheter des améliorations.
-- Le joueur peut améliorer la valeur de ses clics ou les clics passifs des auditeurs qu'il a embauché.
-
-## Glossaire
-
-- **Processus** : un processus est un enchaînement d’activités complémentaires et indépendantes ayant une finalité commune, ici cela se résume à cliquer. Les améliorations que le joueur achète correspondent aux activités.
-
-- **Dysfonctionnement** : un dysfonctionnement est un état dans lequel se trouve une activité qui ne produit plus correctement et risque de porter préjudice sur le long terme.
-
-- **Auditeur interne** : un auditeur est une personne qui a pour objectif de vérifier en toute neutralité le bon fonctionnement d'un processus puis de rédiger un rapport contenant. Interne car il est choisi et payé par l'entité (entreprise privée ou administration publique) qu'il doit auditer. Un enjeu crucial d'un auditeur interne est donc son indépendance vis à vis de son employeur.
-
-- **Audité** : un audité est une personne qui a un entretien avec l'auditeur afin que ce dernier puisse mieux comprendre l'état actuel du processus.
-
-- **Clicker** : un clicker est une forme de jeu incrémental consistant en l'action simple de cliquer pour produire une ressource qui nous permettra d'acheter des améliorations pour produire plus et ainsi de suite sans réel finalité autre que le plaisir de voir des gros chiffres.
