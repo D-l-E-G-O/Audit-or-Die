@@ -67,6 +67,6 @@ func _on_progress_bar_maximum_reached(cycles: int) -> void:
 	cycle_completed.emit(get_instance_id(), cycles)
 
 ## Procédure qui réinitialise la barre de progression.
-## @params bool Emettre un signal lors de la réinitialisation si true.
+## @params no_signal Emettre un signal lors de la réinitialisation si true.
 func reset(no_signal: bool) -> void:
 	progress_bar.reset(no_signal)
