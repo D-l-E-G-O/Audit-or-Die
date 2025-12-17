@@ -38,29 +38,29 @@ Décompressez l’archive téléchargée dans le dossier de votre choix.
 ### 3 - Lancement du jeu
 - **Windows**
 
-    Double-clique sur :
-    ```bash
-    Audit-Or-Die.exe
-    ```
+	Double-clique sur :
+	```bash
+	Audit-Or-Die.exe
+	```
 
 - **Linux**
 
-    Rendez le fichier exécutable :
-    ```bash
-    chmod +x Audit-Or-Die.x86_64
-    ```
+	Rendez le fichier exécutable :
+	```bash
+	chmod +x Audit-Or-Die.x86_64
+	```
 
-    Puis lancez :
-    ```bash
-    ./Audit-Or-Die.x86_64
-    ```
+	Puis lancez :
+	```bash
+	./Audit-Or-Die.x86_64
+	```
 
 - **MacOS**
 
-    Double-cliquez sur l’application :
-    ```bash
-    Audit-Or-Die.app
-    ```
+	Double-cliquez sur l’application :
+	```bash
+	Audit-Or-Die.app
+	```
 
 ## Objectifs pédagogiques
 

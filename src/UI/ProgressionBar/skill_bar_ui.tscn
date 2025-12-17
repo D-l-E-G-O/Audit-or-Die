@@ -23,7 +23,7 @@ layout_mode = 2
 size_flags_vertical = 10
 size_flags_stretch_ratio = 0.1
 theme_override_font_sizes/font_size = 30
-text = "Skills Level : 0"
+text = "Niveau de compétence: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 

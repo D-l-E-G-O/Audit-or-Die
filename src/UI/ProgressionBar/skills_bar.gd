@@ -19,8 +19,9 @@ func _on_maximum_reached(cycles: int) -> void:
 	set_max_value(pow(2, level))
 	reset_with_tween()
 	if label:
-		label.text = "Skills level: %d" % level
+		label.text = "Niveau de compétence: %d" % level
 	var upgrade_points: int = Global.get_upgrade_points()
 	for i: int in range(cycles):
 		upgrade_points += 10 * (level - i)
+	SignalBus.level_up.emit(level)
 	Global.set_upgrade_points(upgrade_points)

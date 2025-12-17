@@ -10,6 +10,8 @@ extends Node
 
 signal finish_audit(audits: int)
 
+signal level_up(level: int)
+
 signal update_upgrade_points(points: int)
 
 signal update_auto_clicks(value: float)

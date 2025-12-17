@@ -17,7 +17,7 @@ func _ready() -> void:
 func update_label(points: int) -> void:
 	if !upgrade_points:
 		return
-	upgrade_points.text = "Upgrade points: %d" % points
+	upgrade_points.text = "Points d'amélioration: %d" % points
 
 
 func _on_clicks_upgraded() -> void:

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ctw332a573a73" path="res://src/UI/ClickBar/AutoClick/auto_click_manager.gd" id="3_ifgwp"]
 [ext_resource type="PackedScene" uid="uid://c53ury7a1l5hy" path="res://src/UI/ClickBar/click_bar_display.tscn" id="4_7yohf"]
 
-[node name="ClickBarChain" type="HBoxContainer"]
+[node name="ClickBarChain" type="HBoxContainer" node_paths=PackedStringArray("auto_click_manager")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,40 +16,36 @@ size_flags_vertical = 3
 theme_override_constants/separation = 30
 alignment = 1
 script = ExtResource("1_fam25")
+auto_click_manager = NodePath("AutoClickManager")
 
 [node name="Step 1" parent="." instance=ExtResource("4_7yohf")]
 layout_mode = 2
-alignment = 0
 color = Color(0, 0, 1, 1)
 label = "Planification"
 hide_cycles = true
 
 [node name="Step 2" parent="." instance=ExtResource("4_7yohf")]
 layout_mode = 2
-alignment = 0
 color = Color(0, 1, 0, 1)
+required_clicks = 6
 label = "Travail sur le terrain"
 
 [node name="Step 3" parent="." instance=ExtResource("4_7yohf")]
 layout_mode = 2
-alignment = 0
 color = Color(1, 0, 0, 1)
 required_clicks = 12
 label = "Evaluations et contrôles"
 
 [node name="Step 4" parent="." instance=ExtResource("4_7yohf")]
 layout_mode = 2
-alignment = 0
 color = Color(1, 1, 0, 1)
 required_clicks = 6
 label = "Revue qualité"
 
 [node name="Step 5" parent="." instance=ExtResource("4_7yohf")]
 layout_mode = 2
-alignment = 0
 color = Color(0, 1, 1, 1)
 label = "Rapport d'audit"
 
-[node name="AutoClickManager" type="Node" parent="." node_paths=PackedStringArray("click_bar_chain")]
+[node name="AutoClickManager" type="Node" parent="."]
 script = ExtResource("3_ifgwp")
-click_bar_chain = NodePath("..")

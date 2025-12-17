@@ -21,7 +21,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-alignment = 1
 script = ExtResource("1_b50l3")
 cps_container = NodePath("CPSContainer")
 click_bar = NodePath("ClickBar")
@@ -49,6 +48,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_iyp3o")
 [node name="ClickBar" parent="." instance=ExtResource("2_50t8o")]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 
 [node name="Cycles" parent="." instance=ExtResource("3_50t8o")]
 layout_mode = 2

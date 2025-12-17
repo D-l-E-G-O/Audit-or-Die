@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://t4y2dg4wo0a1"]
+[gd_scene load_steps=10 format=3 uid="uid://t4y2dg4wo0a1"]
 
 [ext_resource type="Script" uid="uid://bfxevppkmcc3o" path="res://src/UI/MainUI/main_ui.gd" id="1_633n5"]
 [ext_resource type="PackedScene" uid="uid://by7mcwuv62vv0" path="res://src/UI/UpgradeMenu/upgrade_menu.tscn" id="2_633n5"]
@@ -13,6 +13,8 @@ bg_color = Color(0.301961, 0.301961, 0.301961, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bwggr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2x7g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8e6pk"]
 
 [node name="MainUI" type="Control" node_paths=PackedStringArray("sync_click_bars")]
 layout_mode = 3
@@ -64,7 +66,8 @@ size_flags_stretch_ratio = 0.2
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Synchronise
+mouse_default_cursor_shape = 2
+text = "Synchroniser
 "
 
 [node name="UpgradeMenu" parent="VBoxContainer/TopContainer/HBoxContainer" instance=ExtResource("2_633n5")]
@@ -121,15 +124,23 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="ShowInfosCheckButton" type="CheckButton" parent="VBoxContainer/BottomContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 8
 size_flags_stretch_ratio = 0.3
+mouse_default_cursor_shape = 2
 theme_override_constants/h_separation = 5
 theme_override_font_sizes/font_size = 25
-text = "Show info"
+text = "Infos "
 alignment = 1
 expand_icon = true
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/BottomContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_8e6pk")
 
 [node name="SkillBarUI" parent="VBoxContainer/BottomContainer/HBoxContainer" instance=ExtResource("4_633n5")]
 layout_mode = 2
@@ -141,8 +152,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
 size_flags_stretch_ratio = 0.3
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
-text = "Back to menu"
+text = "Retour au menu"
 
 [connection signal="pressed" from="VBoxContainer/TopContainer/HBoxContainer/MarginContainer/SyncClickBars" to="." method="_on_sync_click_bars_pressed"]
 [connection signal="toggled" from="VBoxContainer/BottomContainer/HBoxContainer/ShowInfosCheckButton" to="." method="_on_show_infos_check_button_toggled"]

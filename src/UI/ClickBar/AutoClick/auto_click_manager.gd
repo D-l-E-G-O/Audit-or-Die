@@ -1,21 +1,11 @@
 extends Node
 class_name AutoClickManager
 
-@export var click_bar_chain: ClickBarChain
-
-
 var clickbars: Array[ClickBarDisplay] = []
 
 
 func _ready() -> void:
-	if !click_bar_chain:
-		push_error("%s : @export var click_bar_chain is not defined." % name)
-		return
 	SignalBus.update_auto_clicks.connect(_on_update_auto_clicks)
-	for click_bar_display in click_bar_chain.get_children():
-		if click_bar_display is ClickBarDisplay:
-			clickbars.append(click_bar_display)
-			click_bar_display.distribution_bar.value_updated.connect(_on_distribution_bar_value_updated)
 
 
 func _physics_process(delta: float) -> void:
@@ -25,6 +15,11 @@ func _physics_process(delta: float) -> void:
 			clickbars.erase(click_bar_display)
 		elif !click_bar_display.click_bar.disabled:
 			click_bar_display.click_bar.add_value(click_bar_display.cps * delta)
+
+
+func add_new_click_bar_display(click_bar_display: ClickBarDisplay) -> void:
+	clickbars.append(click_bar_display)
+	click_bar_display.distribution_bar.value_updated.connect(_on_distribution_bar_value_updated)
 
 
 func _on_update_auto_clicks(value: float) -> void:

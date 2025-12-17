@@ -53,11 +53,12 @@ value = NodePath("MarginContainer/GridContainer/Value")
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 theme_override_styles/pressed = SubResource("StyleBoxFlat_804q4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_uylaa")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_804q4")
-text = "Upgrade"
+text = "Améliorer"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -77,18 +78,19 @@ columns = 2
 [node name="Level" parent="MarginContainer/GridContainer" instance=ExtResource("2_804q4")]
 layout_mode = 2
 alignment = 1
-text = "Level: "
+text = "Niveau: "
 font_size = 14
 
 [node name="Cost" parent="MarginContainer/GridContainer" instance=ExtResource("2_804q4")]
 layout_mode = 2
 alignment = 1
-text = "Cost: "
+text = "Coût: "
 font_size = 14
 
 [node name="Value" parent="MarginContainer/GridContainer" instance=ExtResource("2_804q4")]
 layout_mode = 2
 alignment = 1
+text = "Valeur: "
 font_size = 14
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
