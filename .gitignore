@@ -1,3 +1,14 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Fichiers Godot temporaires
+export.cfg
+export_presets.cfg
+*.import
+.build
+.tmp
+
+# Fichiers compilés locaux
+/build/
+/installer/
