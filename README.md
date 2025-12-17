@@ -62,11 +62,9 @@ Décompressez l’archive téléchargée dans le dossier de votre choix.
 	Audit-Or-Die.app
 	```
 
-## Objectifs pédagogiques
+## Objectif pédagogique
 
-
-### Objectifs pédagogiques avancés
-
+	Faire comprendre que l'audit permet de faire grandir l'entreprise en mettant en lumière certains problèmes ou non-conformités. L’auditeur protège la fiabilité et la confiance grâce à la vérification rigoureuse et à la détection des risques, des erreurs, des fraudes et des incohérences.
 
 ## Références
 
