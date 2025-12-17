@@ -22,44 +22,24 @@ Veuillez télécharger la dernière version du jeu depuis la section **[Releases
 
 Choisissez l’archive correspondant à votre système d'exploitation :
 
-- **Windows** : Audit-Or-Die_Windows.zip
+- **Windows** : Windows.zip
 
-- **Linux** : Audit-Or-Die_Linux.tar.gz
-
-- **MacOS** : Audit-Or-Die_Mac.app.zip
+- **Linux** : Linux.zip
 
 ### 2 - Extraction des fichiers
-Décompressez l’archive téléchargée dans le dossier de votre choix.
-
-- **Windows** : clic droit → Extraire tout
-
-- **Linux** : ```bash tar -xvf <archive> ```
-
-- **MacOS** : double-clic
+Suivez les instructions du fichier INSTALL.md présent dans l'archive téléchargée.
 
 ### 3 - Lancement du jeu
 - **Windows**
 
 	Double-clique sur :
 	```bash
-	Audit-Or-Die.exe
+	AuditOrDie.exe
 	```
 
 - **Linux**
 
-	Rendez le fichier exécutable :
+	Entrez la commande suivante :
 	```bash
-	chmod +x Audit-Or-Die.x86_64
-	```
-
-	Puis lancez :
-	```bash
-	./Audit-Or-Die.x86_64
-	```
-
-- **MacOS**
-
-	Double-cliquez sur l’application :
-	```bash
-	Audit-Or-Die.app
+	./AuditOrDie.x86_64
 	```
