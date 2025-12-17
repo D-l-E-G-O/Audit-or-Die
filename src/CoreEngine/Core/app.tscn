@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://drknkt48dsc4p"]
+[gd_scene load_steps=3 format=3 uid="uid://drknkt48dsc4p"]
 
-[ext_resource type="Script" uid="uid://di7bavvg3iabm" path="res://src/CoreEngine/Core/app.gd" id="1_43qvr"]
 [ext_resource type="PackedScene" uid="uid://bsbkv7vfu553g" path="res://src/CoreEngine/SceneManager/scene_root.tscn" id="1_inunu"]
 [ext_resource type="PackedScene" uid="uid://cmbo6k7l43nev" path="res://src/CoreEngine/UI/ui_root.tscn" id="2_43qvr"]
 
 [node name="App" type="Node"]
-script = ExtResource("1_43qvr")
 
 [node name="SceneRoot" parent="." instance=ExtResource("1_inunu")]
 
