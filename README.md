@@ -8,6 +8,13 @@
 
 ## Captures d'écran
 
+Begining UI
+![Begining UI](assets/captures/begining_ui.png "Begining UI")
+Endgame UI
+![Endgame UI](assets/captures/endgame_ui.png "Endgame UI")
+Main Menu
+![Main Menu](assets/captures/main_menu.png "Main Menu")
+
 ## Technologies utilisées
 
 - **Langage :** GDScript    
