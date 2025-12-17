@@ -72,6 +72,12 @@ Faire comprendre que l'audit permet de faire grandir l'entreprise en mettant en 
 
 ## Description des fonctionnalités
 
+- Le joueur clique sur les boutons représentant les étapes de l'audit au centre de l'écran.
+- En créant des audit, le joueur augmente la barre de compétence.
+- A chaque fois que la barre de compétence est remplie, le joueur gagne un niveau.
+- A chaque fois que le joueur monte en niveau, il obtient des points d'amélioration.
+- Avec ces points d'amélioration, le joueur peut acheter des améliorations.
+- Le joueur peut améliorer la valeur de ses clics ou les clics passifs des auditeurs qu'il a embauché.
 
 ## Glossaire
 
