@@ -27,6 +27,8 @@ Game="*res://src/CoreEngine/Core/Game.gd"
 window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="uid://gmvy1yxa6p1e"
+mouse_cursor/custom_image_hotspot=Vector2(12, 0)
 
 [dotnet]
 
