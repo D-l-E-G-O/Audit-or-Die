@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0rlm6bsdqlkf"]
+[gd_scene load_steps=7 format=3 uid="uid://c0rlm6bsdqlkf"]
 
 [ext_resource type="Script" uid="uid://dde4hal3g2kua" path="res://src/UI/UpgradeMenu/upgrade_button.gd" id="1_rf4r5"]
 [ext_resource type="PackedScene" uid="uid://cidffowwto0oy" path="res://src/UI/ValueLabel/value_label.tscn" id="2_804q4"]
+[ext_resource type="Texture2D" uid="uid://jwkow7m6uesq" path="res://assets/images/icon.svg" id="2_uylaa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_804q4"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -31,13 +32,13 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_804q4"]
 
-[node name="UpgradeButton" type="VBoxContainer" node_paths=PackedStringArray("button", "level", "cost", "value")]
+[node name="UpgradeButton" type="HBoxContainer" node_paths=PackedStringArray("label", "button", "level", "cost", "value")]
 clip_contents = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -974.0
-offset_bottom = -531.0
+offset_right = -850.0
+offset_bottom = -500.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -45,10 +46,11 @@ size_flags_vertical = 4
 theme_override_constants/separation = 10
 alignment = 1
 script = ExtResource("1_rf4r5")
+label = NodePath("MarginContainer/VBoxContainer/Label")
 button = NodePath("Button")
-level = NodePath("MarginContainer/GridContainer/Level")
-cost = NodePath("MarginContainer/GridContainer/Cost")
-value = NodePath("MarginContainer/GridContainer/Value")
+level = NodePath("MarginContainer/VBoxContainer/GridContainer/Level")
+cost = NodePath("MarginContainer/VBoxContainer/GridContainer/Cost")
+value = NodePath("MarginContainer/VBoxContainer/GridContainer/Value")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
@@ -58,36 +60,49 @@ theme_override_font_sizes/font_size = 25
 theme_override_styles/pressed = SubResource("StyleBoxFlat_804q4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_uylaa")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_804q4")
-text = "Améliorer"
+icon = ExtResource("2_uylaa")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 5
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-size_flags_stretch_ratio = 0.0
-theme_override_constants/h_separation = 25
-theme_override_constants/v_separation = 10
-columns = 2
+theme_override_constants/separation = 10
+alignment = 1
 
-[node name="Level" parent="MarginContainer/GridContainer" instance=ExtResource("2_804q4")]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 20
+text = "Améliorer"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Level" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_804q4")]
 layout_mode = 2
 alignment = 1
 text = "Niveau: "
 font_size = 14
 
-[node name="Cost" parent="MarginContainer/GridContainer" instance=ExtResource("2_804q4")]
+[node name="Cost" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_804q4")]
 layout_mode = 2
 alignment = 1
 text = "Coût: "
 font_size = 14
 
-[node name="Value" parent="MarginContainer/GridContainer" instance=ExtResource("2_804q4")]
+[node name="Value" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_804q4")]
 layout_mode = 2
 alignment = 1
 text = "Valeur: "

@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://by7mcwuv62vv0"]
+[gd_scene load_steps=8 format=3 uid="uid://by7mcwuv62vv0"]
 
 [ext_resource type="Script" uid="uid://bkn0thblhuhml" path="res://src/UI/UpgradeMenu/upgrade_menu.gd" id="1_0damn"]
 [ext_resource type="PackedScene" uid="uid://c0rlm6bsdqlkf" path="res://src/UI/UpgradeMenu/upgrade_button.tscn" id="2_nynxp"]
 [ext_resource type="Script" uid="uid://b5l68tjgu4cfj" path="res://src/UI/UpgradeMenu/Upgrade/upgrade.gd" id="3_7akbo"]
+[ext_resource type="Texture2D" uid="uid://dqi171qi80c6c" path="res://assets/images/click_image.png" id="3_wywlu"]
+[ext_resource type="Texture2D" uid="uid://c2s0p3uurwmpp" path="res://assets/images/auditor_image.png" id="5_in4u0"]
 
 [sub_resource type="Resource" id="Resource_qy5x6"]
 script = ExtResource("3_7akbo")
@@ -44,9 +46,12 @@ theme_override_constants/separation = 20
 
 [node name="UpgradePoints" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.15
 theme_override_font_sizes/font_size = 40
 text = "Points d'amélioration : 0"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Panel" type="Panel" parent="PanelContainer/VBoxContainer/UpgradePoints"]
 show_behind_parent = true
@@ -59,6 +64,8 @@ grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.85
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 20
@@ -66,7 +73,6 @@ theme_override_constants/margin_bottom = 20
 [node name="UpgradeContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
 clip_contents = true
 layout_mode = 2
-size_flags_horizontal = 4
 theme_override_constants/separation = 20
 alignment = 1
 
@@ -74,12 +80,16 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 0
+alignment = 0
+icon = ExtResource("3_wywlu")
 upgrade = SubResource("Resource_qy5x6")
 
 [node name="Auditors" parent="PanelContainer/VBoxContainer/MarginContainer/UpgradeContainer" instance=ExtResource("2_nynxp")]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 0
+alignment = 2
+icon = ExtResource("5_in4u0")
 upgrade = SubResource("Resource_7akbo")
 
 [connection signal="upgraded" from="PanelContainer/VBoxContainer/MarginContainer/UpgradeContainer/Clicks" to="." method="_on_clicks_upgraded"]

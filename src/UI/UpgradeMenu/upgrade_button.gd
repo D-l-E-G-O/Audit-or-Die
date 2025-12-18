@@ -5,6 +5,8 @@ class_name UpgradeButton
 
 signal upgraded
 
+@export var icon: Texture2D
+@export var label: Label
 @export var upgrade: Upgrade
 @export var button: Button
 @export var level: ValueLabel
@@ -15,8 +17,10 @@ signal upgraded
 func _process(_delta: float) -> void:
 	# Affichage dans l'éditeur
 	if Engine.is_editor_hint():
-		if button && upgrade:
-			button.text = upgrade.label
+		if label && upgrade:
+			label.text = upgrade.label
+		if icon && button:
+			button.icon = icon
 
 
 func _ready() -> void:
@@ -26,9 +30,11 @@ func _ready() -> void:
 	if !(upgrade && button && level && cost && value):
 		push_error("%s : some @export variables are null" % name)
 	# Mise à jour des labels
-	if button && upgrade:
-		button.text = upgrade.label
+	if label && upgrade:
+		label.text = upgrade.label
 		_update_labels()
+	if icon && button:
+			button.icon = icon
 
 
 ## Procédure handler qui améliore si possible.
