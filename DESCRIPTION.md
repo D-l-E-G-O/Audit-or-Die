@@ -1,6 +1,6 @@
 # Audit or Die
 
-![Logo](assets/Logo_v1.png "Audit or Die")
+![Logo](assets/images/Logo_v1.png "Audit or Die")
 
 ## Présentation du projet
 
