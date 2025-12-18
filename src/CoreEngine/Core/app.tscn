@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://drknkt48dsc4p"]
 
-[ext_resource type="PackedScene" uid="uid://bsbkv7vfu553g" path="res://src/CoreEngine/SceneManager/scene_root.tscn" id="1_inunu"]
 [ext_resource type="PackedScene" uid="uid://cmbo6k7l43nev" path="res://src/CoreEngine/UI/ui_root.tscn" id="2_43qvr"]
+[ext_resource type="PackedScene" uid="uid://cwekd4ulkjm0j" path="res://src/CoreEngine/Audio/audio_root.tscn" id="3_43qvr"]
 
 [node name="App" type="Node"]
 
-[node name="SceneRoot" parent="." instance=ExtResource("1_inunu")]
-
 [node name="UiRoot" parent="." instance=ExtResource("2_43qvr")]
+
+[node name="AudioRoot" parent="." instance=ExtResource("3_43qvr")]

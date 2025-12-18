@@ -3,11 +3,15 @@ extends Node
 
 @warning_ignore_start("unused_signal")
 
+signal button_pressed()
+
 signal finish_audit(audits: int)
 
 signal level_up(level: int)
 
 signal update_upgrade_points(points: int)
+
+signal upgrade()
 
 signal update_auto_clicks(value: float)
 

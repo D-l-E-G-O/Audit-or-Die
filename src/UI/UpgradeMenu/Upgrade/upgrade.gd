@@ -39,4 +39,5 @@ func can_upgrade(points: int) -> bool:
 func upgrade() -> void:
 	# Mise à jour du nombre de points d'amélioration
 	Global.set_upgrade_points(Global.get_upgrade_points() - get_cost())
+	SignalBus.upgrade.emit()
 	level += 1

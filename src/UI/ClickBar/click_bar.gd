@@ -59,6 +59,7 @@ func get_value() -> float:
 func _on_pressed() -> void:
 	# Ajouter la valeur correspondant aux clics
 	add_value(Global.get_clicks())
+	SignalBus.button_pressed.emit()
 
 
 ## Procédure handler du signal du maximum atteint.

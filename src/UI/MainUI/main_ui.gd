@@ -24,6 +24,7 @@ func _on_show_infos_check_button_toggled(toggled_on: bool) -> void:
 func _on_back_to_menu_pressed() -> void:
 	# Emettre le signal d'affichage du menu
 	SignalBus.show_main_menu.emit()
+	SignalBus.button_pressed.emit()
 
 
 ## Procédure handler de synchronisation des ClickBar.
