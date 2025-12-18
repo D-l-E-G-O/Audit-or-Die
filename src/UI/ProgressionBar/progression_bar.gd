@@ -3,7 +3,7 @@ class_name ProgressionBar
 
 
 @export var initial_value: float = 0.0
-@export var decrease_bar: TextureProgressBar
+@export var decrease_bar: Range
 
 signal maximum_reached(cycles: int)
 

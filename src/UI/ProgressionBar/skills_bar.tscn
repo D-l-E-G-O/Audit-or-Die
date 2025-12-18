@@ -1,34 +1,100 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcxbtmwayncwk"]
+[gd_scene load_steps=10 format=3 uid="uid://bcxbtmwayncwk"]
 
-[ext_resource type="Texture2D" uid="uid://cetggvombrkr4" path="res://assets/ProgressBar/progressbar_over.png" id="1_gmq15"]
-[ext_resource type="Texture2D" uid="uid://jqg5s4dtwjq0" path="res://assets/ProgressBar/progressbar_yellow.png" id="2_hxshy"]
 [ext_resource type="Script" uid="uid://b7e06ro4t0ly2" path="res://src/UI/ProgressionBar/skills_bar.gd" id="3_ij2oq"]
-[ext_resource type="Texture2D" uid="uid://bglbk6203pab5" path="res://assets/ProgressBar/progressbar_under.png" id="4_wyyql"]
-[ext_resource type="Texture2D" uid="uid://d2tkyilig0u21" path="res://assets/ProgressBar/progressbar_white.png" id="5_8pjbd"]
 
-[node name="SkillsBar" type="TextureProgressBar" node_paths=PackedStringArray("decrease_bar")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -21.0
-offset_top = -5.5
-offset_right = 21.0
-offset_bottom = 5.5
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_romxs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gw17v"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 1, 0, 1)
+corner_radius_top_left = 150
+corner_radius_top_right = 150
+corner_radius_bottom_right = 150
+corner_radius_bottom_left = 150
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofkcx"]
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.5254902)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 150
+corner_radius_top_right = 150
+corner_radius_bottom_right = 150
+corner_radius_bottom_left = 150
+corner_detail = 20
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_romxs"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 150
+corner_radius_top_right = 150
+corner_radius_bottom_right = 150
+corner_radius_bottom_left = 150
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uw0fi"]
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+border_width_left = 40
+border_width_top = 40
+border_width_right = 40
+border_width_bottom = 40
+border_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
+corner_radius_top_left = 150
+corner_radius_top_right = 150
+corner_radius_bottom_right = 150
+corner_radius_bottom_left = 150
+corner_detail = 20
+expand_margin_left = 40.0
+expand_margin_top = 40.0
+expand_margin_right = 40.0
+expand_margin_bottom = 40.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7htsl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7htsl"]
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 150
+corner_radius_top_right = 150
+corner_radius_bottom_right = 150
+corner_radius_bottom_left = 150
+corner_detail = 20
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7402r"]
+
+[node name="ProgressBar" type="ProgressBar" node_paths=PackedStringArray("decrease_bar")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-step = 0.01
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_styles/background = SubResource("StyleBoxEmpty_romxs")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gw17v")
 value = 50.0
-nine_patch_stretch = true
-texture_over = ExtResource("1_gmq15")
-texture_progress = ExtResource("2_hxshy")
 script = ExtResource("3_ij2oq")
 decrease_bar = NodePath("DecreaseBar")
 
-[node name="DecreaseBar" type="TextureProgressBar" parent="."]
+[node name="DecreaseBar" type="ProgressBar" parent="."]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -36,10 +102,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_ofkcx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_romxs")
 value = 60.0
-nine_patch_stretch = true
-texture_under = ExtResource("4_wyyql")
-texture_progress = ExtResource("5_8pjbd")
+show_percentage = false
+
+[node name="TextureOver1" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_uw0fi")
+theme_override_styles/fill = SubResource("StyleBoxEmpty_7htsl")
+value = 100.0
+show_percentage = false
+
+[node name="TextureOver2" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_7htsl")
+theme_override_styles/fill = SubResource("StyleBoxEmpty_7402r")
+value = 100.0
+show_percentage = false
 
 [connection signal="maximum_reached" from="." to="." method="_on_maximum_reached"]

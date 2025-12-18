@@ -142,7 +142,15 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_8e6pk")
 
-[node name="SkillBarUI" parent="VBoxContainer/BottomContainer/HBoxContainer" instance=ExtResource("4_633n5")]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/BottomContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="SkillBarUI" parent="VBoxContainer/BottomContainer/HBoxContainer/MarginContainer" instance=ExtResource("4_633n5")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.9
