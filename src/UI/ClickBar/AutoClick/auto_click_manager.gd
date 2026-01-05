@@ -34,7 +34,7 @@ func add_new_click_bar_display(click_bar_display: ClickBarDisplay) -> void:
 ## @params value La valeur des clicks passifs.
 func _on_update_auto_clicks(value: float) -> void:
 	# Mettre à jour la distribution
-	if get_distribution_percentage_remainder(-1) == 100.0:
+	if _get_distribution_percentage_remainder(-1) == 100.0:
 		clickbars[0].distribution_bar.value = 100.0
 		_on_distribution_bar_value_updated(clickbars[0].distribution_bar)
 	else:
@@ -45,7 +45,7 @@ func _on_update_auto_clicks(value: float) -> void:
 ## @params bar La barre de distribution.
 func _on_distribution_bar_value_updated(bar: DistributionBar) -> void:
 	# Mettre à jour la distribution
-	var max_value: float = get_distribution_percentage_remainder(bar.get_instance_id())
+	var max_value: float = _get_distribution_percentage_remainder(bar.get_instance_id())
 	bar.value = clampf(bar.value, 0.0, max_value)
 	update_cps(bar.get_instance_id(), bar.value)
 
@@ -53,7 +53,7 @@ func _on_distribution_bar_value_updated(bar: DistributionBar) -> void:
 ## Fonction qui renvoie un flottant correspondant au pourcentage restant de répartition des clics passifs.
 ## @params bar_id L'identifiant d'instance de la barre de distribution.
 ## @return float Le pourcentage de répartition restant.
-func get_distribution_percentage_remainder(bar_id: int) -> float:
+func _get_distribution_percentage_remainder(bar_id: int) -> float:
 	var total_remainder: float = 100
 	# Calculer le reste
 	for click_bar_display: ClickBarDisplay in clickbars:

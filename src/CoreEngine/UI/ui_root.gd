@@ -2,7 +2,7 @@ extends Node
 
 
 @export var main_menu: MainMenu
-@export var main_ui: Control
+@export var main_ui: MainUI
 
 
 func _ready() -> void:

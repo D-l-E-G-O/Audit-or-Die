@@ -1,5 +1,5 @@
 extends Control
-
+class_name MainUI
 
 signal main_menu_requested
 

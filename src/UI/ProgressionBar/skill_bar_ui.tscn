@@ -29,7 +29,7 @@ text = "Niveau de compétence: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ProgressBar" parent="VBoxContainer" node_paths=PackedStringArray("label") instance=ExtResource("1_8emqw")]
+[node name="SkillsBar" parent="VBoxContainer" node_paths=PackedStringArray("label") instance=ExtResource("1_8emqw")]
 layout_mode = 2
 size_flags_vertical = 3
 label = NodePath("../Label")

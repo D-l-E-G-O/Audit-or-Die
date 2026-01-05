@@ -12,7 +12,7 @@ class_name ClickBarDisplay
 @export var cps_container: VBoxContainer
 @export var click_bar: ClickBar
 @export var cps_label: ValueLabel
-@export var distribution_bar: ProgressBar
+@export var distribution_bar: DistributionBar
 @export var cycles_label: ValueLabel
 
 
