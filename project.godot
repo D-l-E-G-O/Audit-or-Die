@@ -18,7 +18,6 @@ config/icon="uid://djo6lnjibj8jm"
 
 [autoload]
 
-SignalBus="*res://src/CoreEngine/Core/SignalBus.gd"
 Global="*res://src/CoreEngine/Core/Global.gd"
 Game="*res://src/CoreEngine/Core/Game.gd"
 
@@ -42,6 +41,11 @@ folder_colors={
 "res://src/CoreEngine/": "red",
 "res://src/UI/": "green"
 }
+
+[global_group]
+
+ui_buttons=""
+upgrade_buttons=""
 
 [input]
 

@@ -1,9 +1,16 @@
 extends Node
 
 
+signal upgrade_points_changed(points: int)
+signal auto_clicks_changed(value: float)
+signal level_changed(new_level: int)
+signal finish_audit(audits: int)
+
 var _upgrade_points: int = 0
 var _clicks: float = 1.0
 var _auto_clicks: float = 0.0
+var _level: int = 0
+var _audits: int = 0
 
 
 ## Fonction renvoyant le nombre de points d'amélioration.
@@ -16,7 +23,7 @@ func get_upgrade_points() -> int:
 func set_upgrade_points(value: int) -> void:
 	_upgrade_points = value
 	# Emettre le signal de mise à jour
-	SignalBus.update_upgrade_points.emit(_upgrade_points)
+	upgrade_points_changed.emit(_upgrade_points)
 
 
 ## Fonction renvoyant la valeur de chaque clic.
@@ -40,4 +47,25 @@ func get_auto_clicks() -> float:
 func set_auto_clicks(value: float) -> void:
 	_auto_clicks = value
 	# Emettre le signal de mise à jour
-	SignalBus.update_auto_clicks.emit(_auto_clicks)
+	auto_clicks_changed.emit(_auto_clicks)
+
+
+## Procédure de mise à jour du niveau.
+func level_up() -> void:
+	_level += 1
+	level_changed.emit(_level)
+
+##Fonction renvoyant la valeur du niveau.
+func get_level() -> int:
+	return _level
+
+
+## Procédure de mise à jour du nombre d'audits réalisés.
+## @params amount Le nombre d'audits à ajouter au compteur.
+func add_audits(amount: int) -> void:
+	_audits += amount
+	finish_audit.emit(amount)
+
+##Fonction renvoyant le nombre d'audits réalisés.
+func get_audits() -> int:
+	return _audits

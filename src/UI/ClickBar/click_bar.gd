@@ -59,7 +59,6 @@ func get_value() -> float:
 func _on_pressed() -> void:
 	# Ajouter la valeur correspondant aux clics
 	add_value(Global.get_clicks())
-	SignalBus.button_pressed.emit()
 
 
 ## Procédure handler du signal du maximum atteint.
@@ -67,7 +66,20 @@ func _on_progress_bar_maximum_reached(cycles: int) -> void:
 	# Emettre le signal
 	cycle_completed.emit(get_instance_id(), cycles)
 
+
 ## Procédure qui réinitialise la barre de progression.
 ## @params no_signal Emettre un signal lors de la réinitialisation si true.
 func reset(no_signal: bool) -> void:
 	progress_bar.reset(no_signal)
+
+
+## Procédure pour définir l'interactivité et le curseur du bouton.
+## @params is_active Si true, le bouton est activé avec un curseur main. Sinon, désactivé avec curseur flèche.
+func set_interactable(is_active: bool) -> void:
+	disabled = !is_active
+	
+	# Mise à jour du curseur
+	if is_active:
+		mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	else:
+		mouse_default_cursor_shape = Control.CURSOR_ARROW

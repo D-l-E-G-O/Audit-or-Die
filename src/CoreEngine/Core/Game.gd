@@ -1,21 +1,12 @@
 extends Node
 
 
-var App: Node
-var UI: Node
-var Audio: AudioRoot
-
-
 func _ready() -> void:
 	# Définir les images de curseur de la souris
 	var cursor_default = preload("res://assets/cursors/hand_cursor.png")
 	var cursor_hover = preload("res://assets/cursors/hand_hover_cursor.png")
 	Input.set_custom_mouse_cursor(cursor_default, Input.CURSOR_ARROW, Vector2(12, 0))
 	Input.set_custom_mouse_cursor(cursor_hover, Input.CURSOR_POINTING_HAND, Vector2(12, 7))
-	# Récupérer les noeuds
-	App = get_tree().root.get_node("App")
-	UI = App.get_node("UiRoot")
-	Audio = App.get_node("AudioRoot")
 
 
 ## Procédure pour quitter le jeu.

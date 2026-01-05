@@ -8,8 +8,6 @@ const click_bar_display_scene: PackedScene = preload("res://src/UI/ClickBar/clic
 var chain: Array[ClickBarDisplay] = []
 var identifiers: Array[int] = []
 
-var hide_cps: bool = true
-
 var clicks_config: Array = [
 	[10],
 	[10, 5],
@@ -33,12 +31,10 @@ func _ready() -> void:
 		if click_bar_display is ClickBarDisplay:
 			click_bar_display.queue_free()
 	# Connecter les signaux
-	SignalBus.synchronize_click_bars.connect(_on_synchronize_click_bars)
-	SignalBus.level_up.connect(_on_level_up)
-	SignalBus.set_cps_info_visibility.connect(func(_show: bool): hide_cps = !_show)
+	Global.level_changed.connect(_on_level_up)
 	# Créer la chaine de ClickBarDisplay
 	create_chain(0)
-	chain[0].click_bar.disabled = false
+	chain[0].click_bar.set_interactable(true)
 	chain[0].hide_cycles = true
 	chain[0].update_cycles_label()
 
@@ -52,7 +48,6 @@ func create_chain(level: int) -> void:
 		click_bar_display.color = color_config[i]
 		click_bar_display.required_clicks = clicks_config[level][i]
 		click_bar_display.label = label_config[i]
-		click_bar_display.hide_cps = hide_cps
 		click_bar_display.update_click_bar()
 	# Ajouter le nouveau ClickBarDisplay
 	add_new_click_bar_display(level)
@@ -66,8 +61,7 @@ func add_new_click_bar_display(config_index: int) -> void:
 	click_bar_display.color = color_config[config_index]
 	click_bar_display.required_clicks = clicks_config[config_index][config_index]
 	click_bar_display.label = label_config[-1]
-	click_bar_display.hide_cps = hide_cps
-	click_bar_display.click_bar.disabled = true
+	click_bar_display.click_bar.set_interactable(false)
 	# Ajout dans la scène
 	add_child(click_bar_display)
 	# Ajout dans la liste et liaison du signal
@@ -92,9 +86,9 @@ func _on_cycle_completed(id: int, cycles: int) -> void:
 	# Si le ClickBar display n'est pas le dernier de la chaine: Ajouter les cycles au ClickBarDisplay suivant
 	if click_bar_index < chain.size() - 1:
 		add_cycle(click_bar_index + 1, cycles)
-	# Sinon émettre le signal de création d'audit
+	# Sinon
 	else:
-		SignalBus.finish_audit.emit(cycles)
+		Global.add_audits(cycles)
 	# Mettre à jour le ClickBarDisplay
 	end_cycle(click_bar_index, cycles)
 
@@ -109,7 +103,7 @@ func add_cycle(next_index: int, cycles: int) -> void:
 	click_bar_display.cycles += cycles
 	# Mettre à jour l'affichage
 	if click_bar_display.cycles > 0:
-		click_bar_display.click_bar.disabled = false
+		click_bar_display.click_bar.set_interactable(true)
 
 
 ## Procédure de mise à jour d'un ClickBarDisplay à la fin d'un cycle.
@@ -126,11 +120,11 @@ func end_cycle(click_bar_index: int, cycles: int) -> void:
 	if click_bar_display.cycles <= 0:
 		var click_bar: ClickBar = click_bar_display.click_bar
 		click_bar.call_deferred("reset", true)
-		click_bar.disabled = true
+		click_bar.set_interactable(false)
 
 
-## Procédure handler de synchronisation des ClickBarDisplay.
-func _on_synchronize_click_bars() -> void:
+## Procédure de synchronisation des ClickBarDisplay.
+func synchronize_click_bars() -> void:
 	# Synchroniser les ClickBarDisplay par rapport au ClickBarDisplay le moins avancé
 	var min_value: float = get_smallest_click_bar_value()
 	for display: ClickBarDisplay in chain:

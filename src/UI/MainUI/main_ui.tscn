@@ -16,7 +16,7 @@ bg_color = Color(0.301961, 0.301961, 0.301961, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8e6pk"]
 
-[node name="MainUI" type="Control" node_paths=PackedStringArray("sync_click_bars")]
+[node name="MainUI" type="Control" node_paths=PackedStringArray("upgrade_menu", "sync_click_bars", "click_bar_chain")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +24,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_633n5")
+upgrade_menu = NodePath("VBoxContainer/TopContainer/HBoxContainer/UpgradeMenu")
 sync_click_bars = NodePath("VBoxContainer/TopContainer/HBoxContainer/MarginContainer/SyncClickBars")
+click_bar_chain = NodePath("VBoxContainer/CenterContainer/HBoxContainer/ClickBarChain")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -62,7 +64,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
 
-[node name="SyncClickBars" type="Button" parent="VBoxContainer/TopContainer/HBoxContainer/MarginContainer"]
+[node name="SyncClickBars" type="Button" parent="VBoxContainer/TopContainer/HBoxContainer/MarginContainer" groups=["ui_buttons"]]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -155,7 +157,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.9
 
-[node name="BackToMenu" type="Button" parent="VBoxContainer/BottomContainer/HBoxContainer"]
+[node name="BackToMenu" type="Button" parent="VBoxContainer/BottomContainer/HBoxContainer" groups=["ui_buttons"]]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8

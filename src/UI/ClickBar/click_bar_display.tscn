@@ -48,7 +48,6 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_iyp3o")
 [node name="ClickBar" parent="." instance=ExtResource("2_50t8o")]
 layout_mode = 2
 size_flags_vertical = 3
-mouse_default_cursor_shape = 2
 
 [node name="Cycles" parent="." instance=ExtResource("3_50t8o")]
 layout_mode = 2

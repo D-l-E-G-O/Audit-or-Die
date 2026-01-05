@@ -7,7 +7,7 @@ var clickbars: Array[ClickBarDisplay] = []
 
 func _ready() -> void:
 	# Connecter le signal
-	SignalBus.update_auto_clicks.connect(_on_update_auto_clicks)
+	Global.auto_clicks_changed.connect(_on_update_auto_clicks)
 
 
 func _physics_process(delta: float) -> void:

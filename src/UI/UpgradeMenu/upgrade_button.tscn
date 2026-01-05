@@ -52,7 +52,7 @@ level = NodePath("MarginContainer/VBoxContainer/GridContainer/Level")
 cost = NodePath("MarginContainer/VBoxContainer/GridContainer/Cost")
 value = NodePath("MarginContainer/VBoxContainer/GridContainer/Value")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." groups=["ui_buttons", "upgrade_buttons"]]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2

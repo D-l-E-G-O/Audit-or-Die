@@ -4,8 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://ripajanrupfk" path="res://src/UI/MainMenu/main_menu.tscn" id="2_0gxqm"]
 [ext_resource type="PackedScene" uid="uid://t4y2dg4wo0a1" path="res://src/UI/MainUI/main_ui.tscn" id="3_hlx0d"]
 
-[node name="UiRoot" type="Node"]
+[node name="UiRoot" type="Node" node_paths=PackedStringArray("main_menu", "main_ui")]
 script = ExtResource("1_r2yeb")
+main_menu = NodePath("CanvasLayer/MainMenu")
+main_ui = NodePath("CanvasLayer/MainUI")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -13,5 +15,3 @@ script = ExtResource("1_r2yeb")
 visible = false
 
 [node name="MainMenu" parent="CanvasLayer" instance=ExtResource("2_0gxqm")]
-
-[connection signal="show_main_ui" from="CanvasLayer/MainMenu" to="." method="_on_main_menu_show_main_ui"]

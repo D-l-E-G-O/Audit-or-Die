@@ -15,7 +15,7 @@ func _ready() -> void:
 	# Reinitialisation
 	reset(true)
 	# Connecter le signal
-	SignalBus.finish_audit.connect(add_value)
+	Global.finish_audit.connect(add_value)
 
 
 ## Procédure handler d'atteinte du maximum
@@ -34,7 +34,7 @@ func _on_maximum_reached(cycles: int) -> void:
 	var upgrade_points: int = Global.get_upgrade_points()
 	for i: int in range(cycles):
 		upgrade_points += 10 * (level - i)
-	# Emettre le signal d'augmentation de niveau
-	SignalBus.level_up.emit(level)
+	# Augmenter le niveau
+	Global.level_up()
 	# Mettre à jour les points d'amélioration
 	Global.set_upgrade_points(upgrade_points)

@@ -41,8 +41,10 @@ func _ready() -> void:
 	set_process(false)
 	if !(cps_container && click_bar && cps_label && distribution_bar && cycles_label):
 		push_error("%s : some @export variables are null" % name)
-	# Connecter les signaux
-	SignalBus.set_cps_info_visibility.connect(_on_set_cps_info_visibility)
+	# Vérification de l'état actuel des clics automatiques au démarrage
+	var current_auto_clicks = Global.get_auto_clicks()
+	_on_auto_clicks_changed(current_auto_clicks)
+	Global.auto_clicks_changed.connect(_on_auto_clicks_changed)
 	# Mise à jour de l'affichage
 	update_display()
 
@@ -91,7 +93,11 @@ func update_cps_visibility() -> void:
 
 
 ## Procédure de mise à jour de la visibilité des clics par seconde.
-func _on_set_cps_info_visibility(show_cps: bool) -> void:
+## params value La valeur des clics par seconde.
+func _on_auto_clicks_changed(value: float) -> void:
+	# On affiche si la valeur est supérieure à 0
+	var show_cps = value > 0
+	
 	hide_cps = !show_cps
 	if cps_container:
 		cps_container.visible = show_cps

@@ -2,6 +2,8 @@ extends Control
 class_name UpgradeMenu
 
 
+signal cps_visibility_requested(show: bool)
+
 @export var upgrade_points: Label
 @export var clicks: UpgradeButton
 @export var auditors: UpgradeButton
@@ -13,7 +15,7 @@ func _ready() -> void:
 	# Mise à jour du label
 	update_label(0)
 	# Connecter le signal
-	SignalBus.update_upgrade_points.connect(update_label)
+	Global.upgrade_points_changed.connect(update_label)
 
 
 ## Procédure de mise à jour du label.
@@ -40,4 +42,4 @@ func _on_auditors_upgraded() -> void:
 	Global.set_auto_clicks(auditors.upgrade.get_effect())
 	# Afficher les clics par seconde si on améliore pour la première fois
 	if auditors.upgrade.level == 1:
-		SignalBus.set_cps_info_visibility.emit(true)
+		cps_visibility_requested.emit(true)
