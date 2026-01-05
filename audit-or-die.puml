@@ -1,0 +1,218 @@
+@startuml Audit Or Die
+'https://plantuml.com/class-diagram
+
+skinparam linetype ortho
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+hide enum methods
+hide interface attributes
+
+' Horizontal spacing (default ~50)
+skinparam nodesep 150
+
+' Vertical spacing (default ~50)
+skinparam ranksep 150
+
+' --- CORE & SINGLETONS --- '
+class Global {
+    _upgrade_points : Integer
+    _clicks : Float
+    _auto_clicks : Float
+    _level : Integer
+    _audits : Integer
+    get_upgrade_points() : Integer
+    set_upgrade_points(value: Integer)
+    get_clicks() : Float
+    set_clicks(value: Float)
+    get_auto_clicks() : Float
+    set_auto_clicks(value: Float)
+    level_up()
+    get_level() : Integer
+    add_audits(amount: Integer)
+    get_audits() : Integer
+    <<signal>> upgrade_points_changed(points: Integer)
+    <<signal>> auto_clicks_changed(value: Float)
+    <<signal>> level_changed(new_level: Integer)
+    <<signal>> finish_audit(audits: Integer)
+}
+
+class UiRoot {
+    'main_menu : MainMenu
+    'main_ui : MainUI
+    _on_play_requested()
+    _on_main_menu_requested()
+}
+
+class AudioRoot {
+    _play_click_sound()
+    _play_level_up_sound()
+    _play_audit_created_sound()
+    _play_upgrade_sound()
+}
+
+' --- UI STRUCTURE --- '
+class MainMenu {
+    _on_play_pressed()
+    _on_settings_pressed()
+    _on_quit_pressed()
+    <<signal>> play_requested()
+    <<signal>> settings_requested()
+}
+
+class MainUI {
+    'upgrade_menu : UpgradeMenu
+    'click_bar_chain : ClickBarChain
+    _on_show_infos_check_button_toggled(toggled_on: Boolean)
+    _on_back_to_menu_pressed()
+    _on_sync_click_bars_pressed()
+    _on_set_cps_info_visibility(show_button: Boolean)
+    <<signal>> main_menu_requested()
+}
+
+' --- GAMEPLAY : CLICK CHAIN --- '
+class ClickBarChain {
+    'chain : ClickBarDisplay[*]
+    'auto_click_manager : AutoClickManager
+    clicks_config : Integer[*]
+    label_config : String[*]
+    create_chain(level: Integer)
+    add_new_click_bar_display(config_index: Integer)
+    _on_cycle_completed(id: Integer, cycles: Integer)
+    add_cycle(next_index: Integer, cycles: Integer)
+    end_cycle(click_bar_index: Integer, cycles: Integer)
+    synchronize_click_bars()
+    get_smallest_click_bar_value() : Float
+    _on_level_up(level: Integer)
+}
+
+class ClickBarDisplay {
+    required_clicks : Integer
+    label : String
+    hide_cycles : Boolean
+    hide_cps : Boolean
+    'click_bar : ClickBar
+    cps : Float
+    cycles : Integer
+    update_display()
+    update_click_bar()
+    update_distribution_bar()
+    update_cycles_label()
+    update_cps_visibility()
+    _on_auto_clicks_changed(value: Float)
+}
+
+class ClickBar {
+    'progress_bar : ProgressionBar
+    required_clicks: Integer
+    add_value(nb_clicks: Float)
+    set_value(value: Float)
+    get_value() : Float
+    _on_pressed()
+    _on_progress_bar_maximum_reached(cycles: Integer)
+    reset(no_signal: Boolean)
+    set_interactable(is_active: Boolean)
+    <<signal>> cycle_completed(id: Integer, cycles: Integer)
+}
+
+class AutoClickManager {
+    'clickbars : ClickBarDisplay[*]
+    add_new_click_bar_display(click_bar_display: ClickBarDisplay)
+    _on_update_auto_clicks(value: Float)
+    '_on_distribution_bar_value_updated(bar: DistributionBar)
+    _get_distribution_percentage_remainder(bar_id: Integer) : Float
+    update_cps(bar_id: Integer, value: Float)
+    update_all_cps()
+}
+
+' --- UPGRADE SYSTEM --- '
+class UpgradeMenu {
+    'clicks_button : UpgradeButton
+    'auditors_button : UpgradeButton
+    update_label(points: Integer)
+    _on_clicks_upgraded()
+    _on_auditors_upgraded()
+    <<signal>> cps_visibility_requested(show: Boolean)
+}
+
+class UpgradeButton {
+    'upgrade : Upgrade
+    _on_button_pressed()
+    _update_labels()
+    _on_upgrade_points_changed(points: Integer)
+    <<signal>> upgraded()
+}
+
+class Upgrade {
+    level : Integer
+    label : String
+    description : String
+    base_cost : Integer
+    cost_multiplier : Float
+    initial_effect : Float
+    base_effect : Float
+    effect_multiplier : Float
+    get_cost() : Integer
+    get_effect() : Float
+    can_upgrade(points: Integer) : Boolean
+    upgrade()
+}
+
+class ProgressionBar {
+    initial_value : Float
+    add_value(val: Float)
+    apply_ratio(ratio: Float)
+    update_decrease_bar()
+    reset(no_signal: Boolean)
+    _on_value_changed(_value: Float)
+    set_max_value(val: Float)
+    <<signal>> maximum_reached(cycles: Integer)
+}
+
+class SkillsBar {
+    level : Integer
+    _on_maximum_reached(cycles: Integer)
+}
+
+' --- RELATIONS --- '
+
+' Hierarchy '
+App "1" *--> "1" UiRoot : Has >
+App "1" *-> "1" AudioRoot : Has >
+
+' UI Orchestration '
+UiRoot "1" *--> "1" MainMenu : Manages display >
+UiRoot "1" *--> "1" MainUI : Manages display >
+
+' Main UI Composition '
+MainUI "1" *-> "1" UpgradeMenu : Displays >
+MainUI "1" *--> "1" ClickBarChain : Displays >
+MainUI "1" *--> "1" SkillsBar : Displays >
+
+' Click Chain Composition '
+ClickBarChain "1" *-> "1..*" ClickBarDisplay : Links >
+ClickBarChain "1" *-> "1" AutoClickManager : Has >
+ClickBarChain .> ClickBar : Listens \n(cycle_completed) >
+ClickBarDisplay "1" *-> "1" ClickBar : Displays >
+AutoClickManager "1" o-> "1..*" ClickBarDisplay : Updates >
+ClickBar "1" *-left-> "1" ProgressionBar : Updates >
+
+' Upgrade System '
+UpgradeMenu "1" *--> "1..*" UpgradeButton : Displays >
+UpgradeButton "1" *--> "1" Upgrade : Applies >
+
+' Global Interactions (Simplified) '
+AudioRoot ..> Global : Listens (finish_audit) \n Listens (level_changed) >
+ClickBarChain ..> Global : Listens (level_changed) \n Writes (Audits) >
+AutoClickManager ..> Global : Listens (auto_clicks_changed) >
+UpgradeMenu ..> Global : Listens (upgrade_points_changed) \n Writes (Clicks Power) \n Writes (AutoClicks) >
+UpgradeButton .left.> Global : Listens (upgrade_points_changed) \n Reads (Points) <
+ClickBarDisplay ..> Global : Listens \n(auto_clicks_changed) \n Reads (AutoClicks) >
+ClickBar .right.> Global : Reads (Clicks Power) >
+SkillsBar ..> Global : Listens (finish_audit) \n Writes (Level) \n Reads & Writes (Points) >
+Upgrade ..> Global : Reads & Writes (Points) >
+
+' ProgressionBar '
+SkillsBar --|> ProgressionBar
+
+@enduml
